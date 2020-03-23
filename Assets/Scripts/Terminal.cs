@@ -11,9 +11,14 @@ using UnityEngine.UI;
 public class Terminal : MonoBehaviour {
 
     public TMP_InputField input;
+    public TMP_Text output;
+    const int MAX_LINES = 12;
+
+    public LinkedList<string> items; // queue of terminal output
 
     // Start is called before the first frame update
     void Start () {
+        items = new LinkedList<string>();
         input.onSubmit.AddListener (delegate { SubmitCommand (); });
     }
 
@@ -23,9 +28,20 @@ public class Terminal : MonoBehaviour {
     private void SubmitCommand () {
         string cmd = input.text;
         input.text = "";
-        Debug.Log (cmd);
-        input.Select ();
         EventSystem.current.SetSelectedGameObject (input.gameObject, null);
         input.OnPointerClick (new PointerEventData (EventSystem.current));
+        printOutput(cmd);
+    }
+
+    private void printOutput (string line) {
+        if (items.Count >= MAX_LINES) {
+            items.RemoveFirst();
+        }
+        items.AddLast(line);
+
+        output.text = "";
+        foreach (string s in items) {
+            output.text += s + "\n";
+        }
     }
 }
