@@ -1,0 +1,5 @@
+help - lists the available commands you can execute. Will also provide commands for external devices
+halt - halt the system (Power off Neuros Terminal)
+ls - lists the files in the specific directory/folder you're in
+portscan - scan for available intranet devices
+web - retry connection to external servers
