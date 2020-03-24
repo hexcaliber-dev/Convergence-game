@@ -55,6 +55,7 @@ public class Terminal : MonoBehaviour {
         EventSystem.current.SetSelectedGameObject (input.gameObject, null);
         input.OnPointerClick (new PointerEventData (EventSystem.current));
         PrintOutput ("> " + cmd);
+        GetComponent<Commands>().RunCommand(cmd);
         currCommand = history.First;
     }
 
