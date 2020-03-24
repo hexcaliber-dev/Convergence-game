@@ -39,9 +39,20 @@ public class Terminal : MonoBehaviour {
         }
         items.AddLast(line);
 
+        // This could be in a separate method, where we give
+        // the start line and it prints next 12 lines
+        // (when we implement scrolling)
         output.text = "";
         foreach (string s in items) {
             output.text += s + "\n";
         }
+
+        // A potential option, but it also could make things harder
+        // to maintain a similar functionality with scrolling:
+        // in the if block:
+        // output.text = output.text.substring(output.text.indexOf('\n') + 1);
+
+        // at the end:
+        // output.text += line + "\n";
     }
 }
