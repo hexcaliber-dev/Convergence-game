@@ -365,7 +365,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input: {fileID: 1088345252}
   output: {fileID: 2144728721}
-  scroll: {fileID: 0}
+  scroll: {fileID: 2121780458}
 --- !u!1 &505107758
 GameObject:
   m_ObjectHideFlags: 0
