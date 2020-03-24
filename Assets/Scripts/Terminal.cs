@@ -12,6 +12,7 @@ public class Terminal : MonoBehaviour {
 
     public TMP_InputField input;
     public TMP_Text output;
+    public ScrollRect scroll;
     const int MAX_LINES = 12;
 
     public LinkedList<string> items; // queue of terminal output
@@ -34,18 +35,22 @@ public class Terminal : MonoBehaviour {
     }
 
     private void printOutput (string line) {
-        if (items.Count >= MAX_LINES) {
-            items.RemoveFirst();
-        }
-        items.AddLast(line);
+        // if (items.Count >= MAX_LINES) {
+        //     items.RemoveFirst();
+        // }
+        // items.AddLast(line);
 
-        // This could be in a separate method, where we give
-        // the start line and it prints next 12 lines
-        // (when we implement scrolling)
-        output.text = "";
-        foreach (string s in items) {
-            output.text += s + "\n";
-        }
+        // // This could be in a separate method, where we give
+        // // the start line and it prints next 12 lines
+        // // (when we implement scrolling)
+        // output.text = "";
+        // foreach (string s in items) {
+        //     output.text += s + "\n";
+        // }\
+
+        output.text += line + "\n";
+        output.rectTransform.sizeDelta += new Vector2(0, 20f);
+        scroll.verticalNormalizedPosition = 0.00001f;
 
         // A potential option, but it also could make things harder
         // to maintain a similar functionality with scrolling:
