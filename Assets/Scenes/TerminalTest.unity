@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -365,7 +365,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input: {fileID: 1088345252}
   output: {fileID: 2144728721}
-  scroll: {fileID: 2121780458}
 --- !u!1 &505107758
 GameObject:
   m_ObjectHideFlags: 0
@@ -729,7 +728,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 505107759}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.87225676
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -828,7 +827,7 @@ MonoBehaviour:
   m_text: "\u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f9244cc6108900140a7acfba0173e2ab, type: 2}
-  m_sharedMaterial: {fileID: -7771197207554406309, guid: f9244cc6108900140a7acfba0173e2ab,
+  m_sharedMaterial: {fileID: -1267918864345012512, guid: f9244cc6108900140a7acfba0173e2ab,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1216,7 +1215,7 @@ MonoBehaviour:
   m_text: '>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f9244cc6108900140a7acfba0173e2ab, type: 2}
-  m_sharedMaterial: {fileID: -7771197207554406309, guid: f9244cc6108900140a7acfba0173e2ab,
+  m_sharedMaterial: {fileID: -1267918864345012512, guid: f9244cc6108900140a7acfba0173e2ab,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1477,9 +1476,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Enter text...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f9244cc6108900140a7acfba0173e2ab, type: 2}
-  m_sharedMaterial: {fileID: -7771197207554406309, guid: f9244cc6108900140a7acfba0173e2ab,
-    type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1634,7 +1632,7 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f9244cc6108900140a7acfba0173e2ab, type: 2}
-  m_sharedMaterial: {fileID: -7771197207554406309, guid: f9244cc6108900140a7acfba0173e2ab,
+  m_sharedMaterial: {fileID: -1267918864345012512, guid: f9244cc6108900140a7acfba0173e2ab,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
