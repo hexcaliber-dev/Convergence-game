@@ -15,6 +15,8 @@ public class Commands : MonoBehaviour {
     void Start () {
         cmds.Add ("ls", new Ls (this));
         cmds.Add ("help", new Help (this));
+        cmds.Add ("read", new Read(this));
+        Debug.Log(this);
     }
 
     private Dictionary<string, Command> cmds = new Dictionary<string, Command> ();
@@ -75,6 +77,27 @@ public class Commands : MonoBehaviour {
                     comRef.PrintToTerminal ("Command doesn't exist...");
             }
         }
+    }
+
+    class Read : Command {
+        public Read (Commands com) : base (com) {
+            name = "read";
+            description = "specified files is read and outputted into terminal";
+            usage = "read <filename>";
+        }
+
+        public override void action (string[] args) {
+            if (args.Length == 0){ comRef.PrintToTerminal("Please input file name after \"read\" command"); }
+            else if ( ReadToList(comRef.userAvailableFiles).Contains( args[0] ) )
+            {
+                string content = Resources.Load<TextAsset>($"Text/{args[0]}").text;
+                comRef.PrintToTerminal(content);
+            }
+            else{
+                comRef.PrintToTerminal("File not found.");
+            }
+        }
+
     }
 
     public void RunCommand (string cmd) {
