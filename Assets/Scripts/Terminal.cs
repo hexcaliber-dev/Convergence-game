@@ -54,11 +54,11 @@ public class Terminal : MonoBehaviour {
         input.text = "";
         EventSystem.current.SetSelectedGameObject (input.gameObject, null);
         input.OnPointerClick (new PointerEventData (EventSystem.current));
-        PrintOutput (cmd);
+        PrintOutput ("> " + cmd);
         currCommand = history.First;
     }
 
-    private void PrintOutput (string line) {
+    public void PrintOutput (string line) {
         // if (items.Count >= MAX_LINES) {
         //     items.RemoveFirst();
         // }
