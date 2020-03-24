@@ -14,8 +14,33 @@ public class Commands : MonoBehaviour
     // For testing purposes
     void Start()
     {
-        ls();
+        cmds.Add("ls", new Ls());
+        // cmds.Add("cd", new Cd());
     }
+
+    private Dictionary<string, Command> cmds = new Dictionary<string, Command>();
+
+    abstract class Command {
+        public string name;
+        public string description;
+
+        public abstract void action();
+    }
+
+    class Ls : Command {
+        public Ls() {
+            name = "ls";
+            description = "Lists the files in the directory";
+        }
+
+        public override void action() {
+            
+        }
+    }
+
+    // class Cd : Command {
+    //     ...
+    // }
 
     public List<string> ls()
     {
@@ -23,6 +48,5 @@ public class Commands : MonoBehaviour
         List<string> file_list = read_text.Split('\n').ToList<string>(); // Split using Newline
         return file_list;
     }
-
 
 }
