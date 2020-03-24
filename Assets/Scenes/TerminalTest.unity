@@ -379,9 +379,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37c8ea26a47f8364596afd46d616fe1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allFiles: {fileID: 0}
+  allFiles: {fileID: 4900000, guid: 2a8ec0e844e99f147b3420e3c7808649, type: 3}
   allCommands: {fileID: 0}
-  userAvailableFiles: {fileID: 0}
+  userAvailableFiles: {fileID: 4900000, guid: 4c034b75a522e9649b6a990eaac7d809, type: 3}
   userAvailableCommands: {fileID: 0}
 --- !u!1 &505107758
 GameObject:
