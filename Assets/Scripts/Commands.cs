@@ -15,6 +15,8 @@ public class Commands : MonoBehaviour {
     void Start () {
         cmds.Add ("ls", new Ls (this));
         cmds.Add ("help", new Help (this));
+        cmds.Add ("read", new Read(this));
+        Debug.Log(this);
     }
 
     private Dictionary<string, Command> cmds = new Dictionary<string, Command> ();
@@ -75,6 +77,36 @@ public class Commands : MonoBehaviour {
                     comRef.PrintToTerminal ("Command doesn't exist...");
             }
         }
+    }
+
+    class Read : Command {
+        public Read (Commands com) : base (com) {
+            name = "read";
+            description = "specified files is read and outputted into terminal";
+            usage = "read <filename>";
+        }
+
+        public override void action (string[] args) {
+            /*  DEBUG
+            foreach (string i in args) {Debug.Log(i);}
+            Debug.Log($"{args[0]}.txt");
+            Debug.Log(ReadToList(comRef.userAvailableFiles)[0]);
+            Debug.Log( $"{args[0]}.txt".Equals(ReadToList(comRef.userAvailableFiles)[0].TrimEnd(new char[] { '\r', '\n' })) );
+
+            Debug.Log( $"{args[0]}.txt".Equals(ua_files[0]) );
+            // foreach (string i in ReadToList(comRef.userAvailableFiles)) {Debug.Log(i);}
+            */
+            List<string> ua_files = ReadToList(comRef.userAvailableFiles);
+            for (int i = 0; i < ua_files.Count; i++){ ua_files[i] = ua_files[i].TrimEnd(new char[] { '\r', '\n' }); }
+            if (args.Length == 0){ comRef.PrintToTerminal("Please input file name after \"read\" command"); }
+            else if ( ua_files.Contains( $"{args[0]}.txt" ) )
+            {
+                string content = Resources.Load<TextAsset>($"Text/Logs/{args[0]}").text;
+                comRef.PrintToTerminal(content);
+            }
+            else { comRef.PrintToTerminal("File not found."); }
+        }
+
     }
 
     public void RunCommand (string cmd) {
