@@ -14,7 +14,10 @@ public class Terminal : MonoBehaviour {
     public TMP_Text output;
     public ScrollRect scroll;
     const int MAX_LINES = 12;
-    public List<TextAsset> userAvailableLogs = new List<TextAsset>(); // List of available logs to the 'ls' command.
+    public List<TextAsset> userAvailableLogs = new List<TextAsset> (); // List of available logs to the 'ls' command.
+    public Button scrollUp, scrollDown;
+    const float SCROLL_BUTTON_SENSITIVITY = 0.1f;
+    const int TEXT_HEIGHT = 18; // how much should be added 
 
     /// The currently selected command. Used for up-arrow history completion.
     private LinkedListNode<string> currCommand;
@@ -56,7 +59,7 @@ public class Terminal : MonoBehaviour {
         EventSystem.current.SetSelectedGameObject (input.gameObject, null);
         input.OnPointerClick (new PointerEventData (EventSystem.current));
         PrintLine ("> " + cmd);
-        GetComponent<Commands>().RunCommand(cmd);
+        GetComponent<Commands> ().RunCommand (cmd);
         currCommand = history.First;
     }
 
@@ -74,7 +77,7 @@ public class Terminal : MonoBehaviour {
         //     output.text += s + "\n";
         // }\
 
-        output.text += line + "\n";
+        output.text += " " + line + "\n";
         output.rectTransform.sizeDelta += new Vector2 (0, 20f);
         scroll.verticalNormalizedPosition = 0.00001f;
 
@@ -85,5 +88,13 @@ public class Terminal : MonoBehaviour {
 
         // at the end:
         // output.text += line + "\n";
+    }
+
+    public void ScrollUp () {
+        scroll.verticalNormalizedPosition += SCROLL_BUTTON_SENSITIVITY;
+    }
+
+    public void ScrollDown () {
+        scroll.verticalNormalizedPosition -= SCROLL_BUTTON_SENSITIVITY;
     }
 }
