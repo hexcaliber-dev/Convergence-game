@@ -111,12 +111,11 @@ public class Commands : MonoBehaviour {
 
     public void RunCommand (string cmd) {
         string[] cmdSplit = cmd.Trim ().Split ();
-        print (cmdSplit.Length);
         if (cmdSplit.Length > 0) {
             if (cmds.ContainsKey (cmdSplit[0])) {
                 cmds[cmdSplit[0]].action (cmdSplit.Skip(1).ToArray ());
             } else {
-                PrintToTerminal ("Unknown Command: " + cmd);
+                PrintToTerminal ("<color=\"red\">Unknown Command: " + cmd + "</color>");
             }
         }
     }

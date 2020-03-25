@@ -42,6 +42,6 @@ public class HackableObject : MonoBehaviour {
     }
 
     public override string ToString() {
-        return uid + "(" + GetType().Name + ")";
+        return uid + " (" + GetType().Name + ")";
     }
 }

@@ -17,17 +17,16 @@ public class Server : HackableObject {
     public List<CanvasGroup> screens;
     public State currState; // DO NOT ASSIGN DIRECTLY! Use SetState()
     public TMP_InputField passInput; // Password input field
-    bool addedToLog = false; // have the servers' files been added to the player's log?
 
     // Start is called before the first frame update
     void Start () {
+        passInput.onSubmit.AddListener(delegate {authenticate(passInput.text);});
         incorrectPassText.enabled = false;
         // Unlock by default if no password specified.
         if (password.Length == 0) {
-            SetState (State.Unlocked);
+            authenticate("");
         } else {
             SetState (State.Locked);
-            passInput.onSubmit.AddListener(delegate {authenticate(passInput.text);});
         }
         nameText.text = uid;
     }
@@ -47,6 +46,7 @@ public class Server : HackableObject {
             // auth success (You a genius!)
             SetState (State.Unlocked);
             incorrectPassText.enabled = false;
+            terminal.PrintLine("<color=\"green\">Successfully logged into " + uid + "</color>");
             return true;
         }
         // auth failed (You suck!)
@@ -69,16 +69,13 @@ public class Server : HackableObject {
         }
     }
 
-    // By yours truly, Omar Amazing Hossain - The DIRECTOR <-- Omar didn't write this
-    void AddLogToFile () {
+    // By yours truly, Omar Amazing Hossain - The DIRECTOR <-- Omar didn't (not) write this
+    void AddLogToFile (TextAsset file) {
         // Add contents of Server to Available Logs File
         // Write to the userAvailableLogs TextAsset
-        if (!addedToLog) {
-            foreach (TextAsset file in files) {
-                terminal.userAvailableLogs.Add (file);
-                terminal.PrintLine ("Added new file " + file.name);
-            }
-            terminal.PrintLine ("Added " + files.Count + " file(s) to log. Type 'ls' to view list.");
+        if (!terminal.userAvailableLogs.Contains(file)) {
+            terminal.userAvailableLogs.Add (file);
+            terminal.PrintLine ("Added new file to system: " + file.name);
         }
     }
 }
