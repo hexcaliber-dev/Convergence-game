@@ -90,7 +90,7 @@ public class Commands : MonoBehaviour {
     }
 
     private void PrintToTerminal (string txt) {
-        GetComponent<Terminal> ().PrintOutput (txt);
+        GetComponent<Terminal> ().PrintLine (txt);
     }
 
     public void halt () {

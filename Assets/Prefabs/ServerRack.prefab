@@ -586,6 +586,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8781621735320490448}
   - component: {fileID: 8781621735320490451}
+  - component: {fileID: 748749904}
   m_Layer: 0
   m_Name: ServerRack
   m_TagString: Untagged
@@ -600,7 +601,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8781621735320490449}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.3510878, y: -4.2396064, z: 0}
   m_LocalScale: {x: 27.799435, y: 31.490892, z: 1}
   m_Children:
@@ -665,3 +666,31 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &748749904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8781621735320490449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8f940c24119ea24cb0718cfe20fb8e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panel: {fileID: 0}
+  active: 0
+  online: 1
+  uid: server0
+  terminal: {fileID: 0}
+  password: foobar
+  files:
+  - {fileID: 4900000, guid: 466f5ec5485c78548873b2fc8bf02432, type: 3}
+  incorrectPassText: {fileID: 0}
+  nameText: {fileID: 0}
+  screens:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  currState: 0
+  passInput: {fileID: 0}

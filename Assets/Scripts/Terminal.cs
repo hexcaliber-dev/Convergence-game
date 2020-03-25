@@ -14,6 +14,7 @@ public class Terminal : MonoBehaviour {
     public TMP_Text output;
     public ScrollRect scroll;
     const int MAX_LINES = 12;
+    public List<TextAsset> userAvailableLogs = new List<TextAsset>(); // List of available logs to the 'ls' command.
 
     /// The currently selected command. Used for up-arrow history completion.
     private LinkedListNode<string> currCommand;
@@ -54,12 +55,12 @@ public class Terminal : MonoBehaviour {
         input.text = "";
         EventSystem.current.SetSelectedGameObject (input.gameObject, null);
         input.OnPointerClick (new PointerEventData (EventSystem.current));
-        PrintOutput ("> " + cmd);
+        PrintLine ("> " + cmd);
         GetComponent<Commands>().RunCommand(cmd);
         currCommand = history.First;
     }
 
-    public void PrintOutput (string line) {
+    public void PrintLine (string line) {
         // if (items.Count >= MAX_LINES) {
         //     items.RemoveFirst();
         // }
