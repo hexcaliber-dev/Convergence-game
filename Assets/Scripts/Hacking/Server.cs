@@ -12,7 +12,7 @@ public class Server : HackableObject {
     public TMP_Text incorrectPassText; // incorrect password
     public TMP_Text nameText; // server name text
     // specific state of the server
-    public enum State { Locked, Unlocked, ViewingFile }
+    public enum State { Locked, Unlocked };
     // UIs for locked server, unlocked server, etc. Corresponds to State enum for what UI it is.
     public List<CanvasGroup> screens;
     public State currState; // DO NOT ASSIGN DIRECTLY! Use SetState()
@@ -52,6 +52,7 @@ public class Server : HackableObject {
         // auth failed (You suck!)
         SetState (State.Locked);
         incorrectPassText.enabled = true;
+        passInput.text = "";
         return false;
     }
 

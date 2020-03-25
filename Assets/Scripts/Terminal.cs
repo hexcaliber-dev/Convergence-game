@@ -11,13 +11,13 @@ using UnityEngine.UI;
 public class Terminal : MonoBehaviour {
 
     public TMP_InputField input;
-    public TMP_Text output;
+    public TMP_Text output, fileNameText;
     public ScrollRect scroll;
     const int MAX_LINES = 12;
-    public List<TextAsset> userAvailableLogs = new List<TextAsset> (); // List of available logs to the 'ls' command.
-    public Button scrollUp, scrollDown;
+    public List<TextAsset> userAvailableLogs; // List of available logs to the 'ls' command.
     const float SCROLL_BUTTON_SENSITIVITY = 0.1f;
     const int TEXT_HEIGHT = 18; // how much should be added 
+    const string DEFAULT_FILEDIR = "/home/neuros"; // what should be printed in filename text when no files are open
 
     /// The currently selected command. Used for up-arrow history completion.
     private LinkedListNode<string> currCommand;
@@ -29,6 +29,7 @@ public class Terminal : MonoBehaviour {
         history = new LinkedList<string> ();
         history.AddFirst ("SENTINEL");
         currCommand = history.First;
+        fileNameText.text = DEFAULT_FILEDIR;
         input.onSubmit.AddListener (delegate { SubmitCommand (); });
     }
 
@@ -64,31 +65,12 @@ public class Terminal : MonoBehaviour {
     }
 
     public void PrintLine (string line) {
-        // if (items.Count >= MAX_LINES) {
-        //     items.RemoveFirst();
-        // }
-        // items.AddLast(line);
-
-        // // This could be in a separate method, where we give
-        // // the start line and it prints next 12 lines
-        // // (when we implement scrolling)
-        // output.text = "";
-        // foreach (string s in items) {
-        //     output.text += s + "\n";
-        // }\
-
         output.text += " " + line + "\n";
         output.rectTransform.sizeDelta += new Vector2 (0, 20f);
         scroll.verticalNormalizedPosition = 0.00001f;
-
-        // A potential option, but it also could make things harder
-        // to maintain a similar functionality with scrolling:
-        // in the if block:
-        // output.text = output.text.substring(output.text.indexOf('\n') + 1);
-
-        // at the end:
-        // output.text += line + "\n";
     }
+
+    // public void OpenFile ()
 
     public void ScrollUp () {
         scroll.verticalNormalizedPosition += SCROLL_BUTTON_SENSITIVITY;

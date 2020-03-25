@@ -8,8 +8,6 @@ using UnityEngine;
 public class Commands : MonoBehaviour {
     public TextAsset allFiles;
     public TextAsset allCommands;
-    public TextAsset userAvailableFiles;
-    public TextAsset userAvailableCommands;
 
     // For testing purposes
     void Start () {
@@ -49,8 +47,7 @@ public class Commands : MonoBehaviour {
         }
 
         public override void action (string[] args) {
-            List<string> file_list = ReadToList (comRef.userAvailableFiles);
-            foreach (string s in file_list) { comRef.PrintToTerminal (s); }
+            foreach (TextAsset s in comRef.GetComponent<Terminal>().userAvailableLogs) { comRef.PrintToTerminal (s.name); }
         }
     }
 
@@ -96,7 +93,7 @@ public class Commands : MonoBehaviour {
             Debug.Log( $"{args[0]}.txt".Equals(ua_files[0]) );
             // foreach (string i in ReadToList(comRef.userAvailableFiles)) {Debug.Log(i);}
             */
-            List<string> ua_files = ReadToList(comRef.userAvailableFiles);
+            List<string> ua_files = comRef.UserAvailableFiles().;
             for (int i = 0; i < ua_files.Count; i++){ ua_files[i] = ua_files[i].TrimEnd(new char[] { '\r', '\n' }); }
             if (args.Length == 0){ comRef.PrintToTerminal("Please input file name after \"read\" command"); }
             else if ( ua_files.Contains( $"{args[0]}.txt" ) )
@@ -122,6 +119,10 @@ public class Commands : MonoBehaviour {
 
     private void PrintToTerminal (string txt) {
         GetComponent<Terminal> ().PrintLine (txt);
+    }
+
+    private List<TextAsset> UserAvailableFiles() {
+        return GetComponent<Terminal>().userAvailableLogs;
     }
 
     public void halt () {
