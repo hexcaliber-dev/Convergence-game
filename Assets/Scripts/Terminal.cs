@@ -11,10 +11,11 @@ using UnityEngine.UI;
 public class Terminal : MonoBehaviour {
 
     public TMP_InputField input;
-    public TMP_Text output, fileNameText;
+    public TMP_Text output, fileNameText, fileViewText;
     public ScrollRect scroll;
+    public CanvasGroup fileView;
     const int MAX_LINES = 12;
-    public List<TextAsset> userAvailableLogs; // List of available logs to the 'ls' command.
+    public Dictionary<string, TextAsset> userAvailableLogs; // Dictionary of available logs to the 'ls' command. Key is the file name (ending in .txt), value is the TextAsset object.
     const float SCROLL_BUTTON_SENSITIVITY = 0.1f;
     const int TEXT_HEIGHT = 18; // how much should be added 
     const string DEFAULT_FILEDIR = "/home/neuros"; // what should be printed in filename text when no files are open
@@ -29,8 +30,10 @@ public class Terminal : MonoBehaviour {
         history = new LinkedList<string> ();
         history.AddFirst ("SENTINEL");
         currCommand = history.First;
-        fileNameText.text = DEFAULT_FILEDIR;
         input.onSubmit.AddListener (delegate { SubmitCommand (); });
+        CloseFile ();
+        userAvailableLogs = new Dictionary<string, TextAsset> ();
+        userAvailableLogs.Add ("README.txt", Resources.Load<TextAsset> ("Text/Logs/README"));
     }
 
     // Update is called once per frame
@@ -78,5 +81,28 @@ public class Terminal : MonoBehaviour {
 
     public void ScrollDown () {
         scroll.verticalNormalizedPosition -= SCROLL_BUTTON_SENSITIVITY;
+    }
+
+    public void OpenFile (TextAsset file) {
+        fileView.alpha = 1f;
+        fileView.blocksRaycasts = true;
+        fileNameText.text = DEFAULT_FILEDIR + "/" + file.name + ".txt";
+        fileViewText.text = file.text;
+    }
+
+    public void CloseFile () {
+        fileView.alpha = 0f;
+        fileView.blocksRaycasts = false;
+        fileNameText.text = DEFAULT_FILEDIR;
+    }
+
+    // By yours truly, Omar Amazing Hossain - The DIRECTOR <-- Omar didn't (not) write this
+    public void AddLogToFile (TextAsset file) {
+        // Add contents of Server to Available Logs File
+        // Write to the userAvailableLogs TextAsset
+        if (!userAvailableLogs.ContainsValue (file)) {
+            userAvailableLogs.Add (file.name + ".txt", file);
+            PrintLine ("Added new file to system: " + file.name + ".txt");
+        }
     }
 }

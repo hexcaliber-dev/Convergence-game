@@ -13,8 +13,8 @@ public class Commands : MonoBehaviour {
     void Start () {
         cmds.Add ("ls", new Ls (this));
         cmds.Add ("help", new Help (this));
-        cmds.Add ("read", new Read(this));
-        Debug.Log(this);
+        cmds.Add ("read", new Read (this));
+        Debug.Log (this);
     }
 
     private Dictionary<string, Command> cmds = new Dictionary<string, Command> ();
@@ -47,7 +47,7 @@ public class Commands : MonoBehaviour {
         }
 
         public override void action (string[] args) {
-            foreach (TextAsset s in comRef.GetComponent<Terminal>().userAvailableLogs) { comRef.PrintToTerminal (s.name); }
+            foreach (string s in comRef.GetComponent<Terminal> ().userAvailableLogs.Keys) { comRef.PrintToTerminal (s); }
         }
     }
 
@@ -69,8 +69,7 @@ public class Commands : MonoBehaviour {
                 if (comRef.cmds.ContainsKey (args[0])) {
                     comRef.PrintToTerminal (args[0] + " - " + comRef.cmds[args[0]].description);
                     comRef.PrintToTerminal ("Usage: " + comRef.cmds[args[0]].usage);
-                }
-                else
+                } else
                     comRef.PrintToTerminal ("Command doesn't exist...");
             }
         }
@@ -93,15 +92,15 @@ public class Commands : MonoBehaviour {
             Debug.Log( $"{args[0]}.txt".Equals(ua_files[0]) );
             // foreach (string i in ReadToList(comRef.userAvailableFiles)) {Debug.Log(i);}
             */
-            List<string> ua_files = comRef.UserAvailableFiles().;
-            for (int i = 0; i < ua_files.Count; i++){ ua_files[i] = ua_files[i].TrimEnd(new char[] { '\r', '\n' }); }
-            if (args.Length == 0){ comRef.PrintToTerminal("Please input file name after \"read\" command"); }
-            else if ( ua_files.Contains( $"{args[0]}.txt" ) )
-            {
-                string content = Resources.Load<TextAsset>($"Text/Logs/{args[0]}").text;
-                comRef.PrintToTerminal(content);
-            }
-            else { comRef.PrintToTerminal("File not found."); }
+            // List<string> ua_files = comRef.UserAvailableFiles ();
+            // for (int i = 0; i < ua_files.Count; i++) { ua_files[i] = ua_files[i].TrimEnd (new char[] { '\r', '\n' }); }
+            if (args.Length == 0) {
+                comRef.PrintToTerminal ("Please input file name after \"read\" command");
+            } else if (comRef.UserAvailableFiles ().ContainsKey ($"{args[0]}")) {
+                comRef.GetComponent<Terminal> ().OpenFile (comRef.UserAvailableFiles () [args[0]]);
+            } else if (comRef.UserAvailableFiles ().ContainsKey ($"{args[0]}.txt")) {
+                comRef.GetComponent<Terminal> ().OpenFile (comRef.UserAvailableFiles () [args[0] + ".txt"]);
+            } else { comRef.PrintToTerminal ("File not found: " + args[0]); }
         }
 
     }
@@ -110,7 +109,7 @@ public class Commands : MonoBehaviour {
         string[] cmdSplit = cmd.Trim ().Split ();
         if (cmdSplit.Length > 0) {
             if (cmds.ContainsKey (cmdSplit[0])) {
-                cmds[cmdSplit[0]].action (cmdSplit.Skip(1).ToArray ());
+                cmds[cmdSplit[0]].action (cmdSplit.Skip (1).ToArray ());
             } else {
                 PrintToTerminal ("<color=\"red\">Unknown Command: " + cmd + "</color>");
             }
@@ -121,8 +120,8 @@ public class Commands : MonoBehaviour {
         GetComponent<Terminal> ().PrintLine (txt);
     }
 
-    private List<TextAsset> UserAvailableFiles() {
-        return GetComponent<Terminal>().userAvailableLogs;
+    private Dictionary<string, TextAsset> UserAvailableFiles () {
+        return GetComponent<Terminal> ().userAvailableLogs;
     }
 
     public void halt () {

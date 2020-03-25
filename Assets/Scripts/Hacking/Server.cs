@@ -17,6 +17,7 @@ public class Server : HackableObject {
     public List<CanvasGroup> screens;
     public State currState; // DO NOT ASSIGN DIRECTLY! Use SetState()
     public TMP_InputField passInput; // Password input field
+    private ExplorerFile[] explorerFiles;
 
     // Start is called before the first frame update
     void Start () {
@@ -29,6 +30,10 @@ public class Server : HackableObject {
             SetState (State.Locked);
         }
         nameText.text = uid;
+        explorerFiles = panel.GetComponentsInChildren<ExplorerFile>();
+        for (int i = 0; i < files.Count; i += 1) {
+            explorerFiles[i].SetFile(files[i]);
+        }
     }
 
     // Update is called once per frame
@@ -67,16 +72,6 @@ public class Server : HackableObject {
                 screens[i].alpha = 0f;
                 screens[i].blocksRaycasts = false;
             }
-        }
-    }
-
-    // By yours truly, Omar Amazing Hossain - The DIRECTOR <-- Omar didn't (not) write this
-    void AddLogToFile (TextAsset file) {
-        // Add contents of Server to Available Logs File
-        // Write to the userAvailableLogs TextAsset
-        if (!terminal.userAvailableLogs.Contains(file)) {
-            terminal.userAvailableLogs.Add (file);
-            terminal.PrintLine ("Added new file to system: " + file.name);
         }
     }
 }
