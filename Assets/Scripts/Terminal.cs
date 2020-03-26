@@ -88,6 +88,7 @@ public class Terminal : MonoBehaviour {
         fileView.blocksRaycasts = true;
         fileNameText.text = DEFAULT_FILEDIR + "/" + file.name + ".txt";
         fileViewText.text = file.text;
+        scroll.verticalNormalizedPosition = 1f;
     }
 
     public void CloseFile () {
