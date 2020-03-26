@@ -11,11 +11,11 @@ public class Commands : MonoBehaviour {
 
     // For testing purposes
     void Start () {
-        cmds.Add ("ls",   new Ls   (this));
+        cmds.Add ("ls", new Ls (this));
         cmds.Add ("help", new Help (this));
         cmds.Add ("read", new Read (this));
         cmds.Add ("hack", new Hack (this));
-        cmds.Add ("portscan", new Portscan(this));
+        cmds.Add ("portscan", new Portscan (this));
         Debug.Log (this);
     }
 
@@ -107,65 +107,60 @@ public class Commands : MonoBehaviour {
     }
 
     class Hack : Command {
-        public Hack(Commands com) : base(com)
-        {
+        public Hack (Commands com) : base (com) {
             name = "hack";
             description = "hack online devices in vicinity";
             usage = "hack <devicename>";
         }
 
-        public override void Action(string[] args)
-        {
-            Router router = (Router)GameObject.FindObjectOfType( typeof(Router) );
+        public override void Action (string[] args) {
+            Router router = (Router) GameObject.FindObjectOfType (typeof (Router));
             int hackInd;
             HackableObject toHack = router;
             // invalid arguments
-            if (args.Length != 1)
-            {
-                comRef.PrintToTerminal("Please input device name after \"hack\" command.");
+            if (args.Length != 1) {
+                comRef.PrintToTerminal ("Please input device name after \"hack\" command.");
             }
             // everything good!
             else {
-                hackInd = FindHackableObjectByUID(router.connections, args[0]);
-                if ( hackInd > -1 ) {
+                hackInd = FindHackableObjectByUID (router.connections, args[0]);
+                if (hackInd > -1) {
                     toHack = router.connections[hackInd];
 
                     // SUCCESS PATH
                     if (toHack.online && !toHack.active) { // hackable object found and not 
-                                                           // already active
+                        // already active
                         // for loop through all hackable objects and turn them off
                         /// TODO: Make sure to check if object should be made inactive
                         /// or not (i.e. camera, etc. should not be when others are hacked)
                         foreach (HackableObject obj in router.connections) {
                             if (obj.active)
-                                obj.SetEnabled(false);
+                                obj.SetEnabled (false);
                         }
 
-                        toHack.SetEnabled(true);
+                        toHack.SetEnabled (true);
 
-                        /// FIXME: The above code does not seem to change the active server
+                        comRef.PrintToTerminal ("<color=\"green\">" + toHack.ToString () + " successfully hacked.</color>");
 
-                        comRef.PrintToTerminal("<color=\"green\">" + toHack.ToString() + " successfully hacked.</color>");
-                        
-                    // FAILURE PATH
+                        // FAILURE PATH
                     } else if (toHack.online) { // hackable object active
-                        comRef.PrintToTerminal("Already connected to " + toHack.ToString());
+                        comRef.PrintToTerminal ("Already connected to " + toHack.ToString ());
                     } else { // hackable object offline
-                        comRef.PrintToTerminal("ERROR: " + toHack.ToString() + " is offline.");
+                        comRef.PrintToTerminal ("<color=\"red\">ERROR: " + toHack.ToString () + " is offline.</color>");
                     }
                 } else { // hackable object not found
-                    comRef.PrintToTerminal("ERROR: Connection doesn't exist.");
+                    comRef.PrintToTerminal ("<color=\"red\">ERROR: Connection doesn't exist.</color>");
                 }
             }
         }
 
         // to find the object to hack
         // returns the index, or -1 if it does not exist
-        private int FindHackableObjectByUID(List<HackableObject> list, string objUID) {
+        private int FindHackableObjectByUID (List<HackableObject> list, string objUID) {
             // look through all sequentially
             for (int i = 0; i < list.Count; i++) {
                 // return index if found
-                if ( objUID.Equals(list[i].uid) )
+                if (objUID.Equals (list[i].uid))
                     return i;
             }
             return -1;
@@ -173,16 +168,26 @@ public class Commands : MonoBehaviour {
     }
 
     class Portscan : Command {
-        public Portscan(Commands com) : base(com)
-        {
+        public Portscan (Commands com) : base (com) {
             name = "portscan";
             description = "scans environment and finds all routers in broad localization";
             usage = "portscan";
         }
 
-        public override void Action(string[] args)
-        {
-            /// TODO: needs to find all routers beyond scenes
+        public override void Action (string[] args) {
+            if (args.Length == 0) {
+                comRef.PrintToTerminal ("Networks Found:");
+                for (int i = 0; i < Router.allRouterNames.Length; i += 1) {
+                    if (i < Router.unlockedRouters.Count) {
+                        comRef.PrintToTerminal ("<color=\"green\">" + Router.allRouterNames[i] + " (ONLINE)</color>");
+                    } else {
+                        comRef.PrintToTerminal ("<color=\"red\">" + Router.allRouterNames[i] + " (OFFLINE)</color>");
+                    }
+                }
+                comRef.PrintToTerminal ("To connect, type 'hack <devicename>'.");
+            } else {
+                comRef.PrintToTerminal ("Usage: portscan");
+            }
         }
     }
 
