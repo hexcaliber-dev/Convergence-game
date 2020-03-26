@@ -18,20 +18,23 @@ public class HackableObject : MonoBehaviour {
     // public enum Type {Camera, Robot, Phone, Printer, TV, Light, Door, Server, Router};
 
     // Start is called before the first frame update
-    void Start () {
-    }
+    void Start () { }
 
     // Update is called once per frame
     void Update () {
 
     }
 
-    public virtual void HackMessage() {
-        terminal.PrintLine("<color='green'>Successfully connected to " + ToString() + "</color>");
+    public virtual void HackMessage () {
+        terminal.PrintLine ("<color='green'>Successfully connected to " + ToString () + "</color>");
     }
 
     public void ToggleEnabled () {
-        active = !active;
+        SetEnabled(!active);
+    }
+
+    public void SetEnabled (bool enabled) {
+        active = enabled;
         if (active) {
             panel.blocksRaycasts = true;
             panel.alpha = 1f;
@@ -41,7 +44,7 @@ public class HackableObject : MonoBehaviour {
         }
     }
 
-    public override string ToString() {
-        return uid + " (" + GetType().Name + ")";
+    public override string ToString () {
+        return uid + " (" + GetType ().Name + ")";
     }
 }

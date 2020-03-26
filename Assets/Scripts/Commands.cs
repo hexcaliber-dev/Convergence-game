@@ -136,15 +136,16 @@ public class Commands : MonoBehaviour {
                         // for loop through all hackable objects and turn them off
                         /// TODO: Make sure to check if object should be made inactive
                         /// or not (i.e. camera, etc. should not be when others are hacked)
-                        foreach (HackableObject obj in router.connections)
+                        foreach (HackableObject obj in router.connections) {
                             if (obj.active)
-                                obj.ToggleEnabled();
+                                obj.SetEnabled(false);
+                        }
 
-                        toHack.ToggleEnabled();
+                        toHack.SetEnabled(true);
 
                         /// FIXME: The above code does not seem to change the active server
 
-                        comRef.PrintToTerminal(toHack.ToString() + " successfully hacked.");
+                        comRef.PrintToTerminal("<color=\"green\">" + toHack.ToString() + " successfully hacked.</color>");
                         
                     // FAILURE PATH
                     } else if (toHack.online) { // hackable object active
