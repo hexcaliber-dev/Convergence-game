@@ -21,7 +21,7 @@ public class Router : HackableObject {
         nameTxt.text = uid;
         string routerText = "";
         // need txt to show all contents of connections
-        connections.Add(this);
+        connections.Insert(0, this);
         foreach (HackableObject connection in connections) {
             routerText = AddConnection (routerText, connection);
             txt.rectTransform.sizeDelta += new Vector2 (0, 30f);

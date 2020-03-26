@@ -115,32 +115,30 @@ public class Commands : MonoBehaviour {
 
         public override void Action (string[] args) {
             Router router = (Router) GameObject.FindObjectOfType (typeof (Router));
-            int hackInd;
             HackableObject toHack = router;
+
             // invalid arguments
             if (args.Length != 1) {
                 comRef.PrintToTerminal ("Please input device name after \"hack\" command.");
             }
             // everything good!
             else {
-                hackInd = FindHackableObjectByUID (router.connections, args[0]);
-                if (hackInd > -1) {
-                    toHack = router.connections[hackInd];
-
+                toHack = FindHackableObjectByUID (router.connections, args[0]);
+                if (toHack != null) {
                     // SUCCESS PATH
                     if (toHack.online && !toHack.active) { // hackable object found and not 
+
+                        comRef.PrintToTerminal("<color=\"green\">" + toHack.ToString() + " successfully hacked.</color>");
+
                         // already active
                         // for loop through all hackable objects and turn them off
                         /// TODO: Make sure to check if object should be made inactive
                         /// or not (i.e. camera, etc. should not be when others are hacked)
-                        foreach (HackableObject obj in router.connections) {
-                            if (obj.active)
-                                obj.SetEnabled (false);
-                        }
+                        foreach (HackableObject obj in router.connections)
+                            obj.SetEnabled (false);
 
                         toHack.SetEnabled (true);
 
-                        comRef.PrintToTerminal ("<color=\"green\">" + toHack.ToString () + " successfully hacked.</color>");
 
                         // FAILURE PATH
                     } else if (toHack.online) { // hackable object active
@@ -155,15 +153,16 @@ public class Commands : MonoBehaviour {
         }
 
         // to find the object to hack
-        // returns the index, or -1 if it does not exist
-        private int FindHackableObjectByUID (List<HackableObject> list, string objUID) {
+        // returns the object, or null if it does not exist
+        private HackableObject FindHackableObjectByUID (List<HackableObject> list, string objUID) {
             // look through all sequentially
             for (int i = 0; i < list.Count; i++) {
                 // return index if found
                 if (objUID.Equals (list[i].uid))
-                    return i;
+                    return list[i];
             }
-            return -1;
+            // if all fails, does not exist in current localization
+            return null;
         }
     }
 

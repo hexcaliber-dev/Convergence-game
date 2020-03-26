@@ -61,7 +61,7 @@ public class Server : HackableObject {
             // auth success (You a genius!)
             SetState (State.Unlocked);
             incorrectPassText.enabled = false;
-            terminal.PrintLine ("<color=\"green\">Successfully logged into " + uid + "</color>");
+            terminal.PrintLine ("<color=\"green\">Successfully logged into " + uid + ".</color>");
             return true;
         }
         // auth failed (You suck!)
