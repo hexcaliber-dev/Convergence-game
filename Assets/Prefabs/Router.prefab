@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6549354583586708606}
   - component: {fileID: 8644201862720631670}
+  - component: {fileID: 2914259102779077286}
   m_Layer: 0
   m_Name: Router
   m_TagString: Untagged
@@ -81,3 +82,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2914259102779077286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403524241918824985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 014703d0e4f45d14fb8884e4117acd60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panel: {fileID: 0}
+  active: 0
+  online: 1
+  uid: 
+  terminal: {fileID: 0}
+  connections: []
+  nameTxt: {fileID: 0}
+  txt: {fileID: 0}
