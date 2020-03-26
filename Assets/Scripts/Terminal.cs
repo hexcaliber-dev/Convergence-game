@@ -45,14 +45,16 @@ public class Terminal : MonoBehaviour {
             if (Input.GetKeyDown (KeyCode.UpArrow)) {
                 if (currCommand.Next != null) {
                     currCommand = currCommand.Next;
+                    input.text = currCommand.Value;
                 }
             } else if (Input.GetKeyDown (KeyCode.DownArrow)) {
                 if (currCommand.Previous != null) {
                     currCommand = currCommand.Previous;
+                    input.text = currCommand.Value;
                 }
             }
 
-            input.text = currCommand.Value;
+            // input.text = currCommand.Value;
         }
     }
 
