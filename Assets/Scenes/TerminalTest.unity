@@ -1414,6 +1414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd65168a2ed03ef4488df6d751645b97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  label: {fileID: 775413796}
 --- !u!1 &337360583
 GameObject:
   m_ObjectHideFlags: 0
@@ -1657,6 +1658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd65168a2ed03ef4488df6d751645b97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  label: {fileID: 309010015}
 --- !u!225 &373276135
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1999,6 +2001,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd65168a2ed03ef4488df6d751645b97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  label: {fileID: 783369468}
 --- !u!225 &512001929
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -3669,6 +3672,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd65168a2ed03ef4488df6d751645b97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  label: {fileID: 1536384492}
 --- !u!225 &1106355098
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -6595,6 +6599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd65168a2ed03ef4488df6d751645b97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  label: {fileID: 1014256622}
 --- !u!225 &2134412393
 CanvasGroup:
   m_ObjectHideFlags: 0
