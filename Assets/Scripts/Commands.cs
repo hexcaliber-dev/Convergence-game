@@ -11,9 +11,11 @@ public class Commands : MonoBehaviour {
 
     // For testing purposes
     void Start () {
-        cmds.Add ("ls", new Ls (this));
+        cmds.Add ("ls",   new Ls   (this));
         cmds.Add ("help", new Help (this));
         cmds.Add ("read", new Read (this));
+        cmds.Add ("hack", new Hack (this));
+        cmds.Add ("portscan", new Portscan(this));
         Debug.Log (this);
     }
 
@@ -26,7 +28,7 @@ public class Commands : MonoBehaviour {
 
         protected Commands comRef;
 
-        public abstract void action (string[] args);
+        public abstract void Action (string[] args);
 
         public Command (Commands com) {
             comRef = com;
@@ -46,7 +48,7 @@ public class Commands : MonoBehaviour {
             usage = "ls";
         }
 
-        public override void action (string[] args) {
+        public override void Action (string[] args) {
             foreach (string s in comRef.GetComponent<Terminal> ().userAvailableLogs.Keys) { comRef.PrintToTerminal (s); }
         }
     }
@@ -58,7 +60,7 @@ public class Commands : MonoBehaviour {
             usage = "help <command>";
         }
 
-        public override void action (string[] args) {
+        public override void Action (string[] args) {
             print (args);
             if (args.Length == 0) {
                 comRef.PrintToTerminal ("List of available commands:");
@@ -78,11 +80,11 @@ public class Commands : MonoBehaviour {
     class Read : Command {
         public Read (Commands com) : base (com) {
             name = "read";
-            description = "specified files is read and outputted into terminal";
+            description = "specified file is read and outputted into terminal";
             usage = "read <filename>";
         }
 
-        public override void action (string[] args) {
+        public override void Action (string[] args) {
             /*  DEBUG
             foreach (string i in args) {Debug.Log(i);}
             Debug.Log($"{args[0]}.txt");
@@ -95,21 +97,99 @@ public class Commands : MonoBehaviour {
             // List<string> ua_files = comRef.UserAvailableFiles ();
             // for (int i = 0; i < ua_files.Count; i++) { ua_files[i] = ua_files[i].TrimEnd (new char[] { '\r', '\n' }); }
             if (args.Length == 0) {
-                comRef.PrintToTerminal ("Please input file name after \"read\" command");
+                comRef.PrintToTerminal ("Please input file name after \"read\" command.");
             } else if (comRef.UserAvailableFiles ().ContainsKey ($"{args[0]}")) {
                 comRef.GetComponent<Terminal> ().OpenFile (comRef.UserAvailableFiles () [args[0]]);
             } else if (comRef.UserAvailableFiles ().ContainsKey ($"{args[0]}.txt")) {
                 comRef.GetComponent<Terminal> ().OpenFile (comRef.UserAvailableFiles () [args[0] + ".txt"]);
             } else { comRef.PrintToTerminal ("File not found: " + args[0]); }
         }
+    }
 
+    class Hack : Command {
+        public Hack(Commands com) : base(com)
+        {
+            name = "hack";
+            description = "hack online devices in vicinity";
+            usage = "hack <devicename>";
+        }
+
+        public override void Action(string[] args)
+        {
+            Router router = (Router)GameObject.FindObjectOfType( typeof(Router) );
+            int hackInd;
+            HackableObject toHack = router;
+            // invalid arguments
+            if (args.Length != 1)
+            {
+                comRef.PrintToTerminal("Please input device name after \"hack\" command.");
+            }
+            // everything good!
+            else {
+                hackInd = FindHackableObjectByUID(router.connections, args[0]);
+                if ( hackInd > -1 ) {
+                    toHack = router.connections[hackInd];
+
+                    // SUCCESS PATH
+                    if (toHack.online && !toHack.active) { // hackable object found and not 
+                                                           // already active
+                        // for loop through all hackable objects and turn them off
+                        /// TODO: Make sure to check if object should be made inactive
+                        /// or not (i.e. camera, etc. should not be when others are hacked)
+                        foreach (HackableObject obj in router.connections)
+                            if (obj.active)
+                                obj.ToggleEnabled();
+
+                        toHack.ToggleEnabled();
+
+                        /// FIXME: The above code does not seem to change the active server
+
+                        comRef.PrintToTerminal(toHack.ToString() + " successfully hacked.");
+                        
+                    // FAILURE PATH
+                    } else if (toHack.online) { // hackable object active
+                        comRef.PrintToTerminal("Already connected to " + toHack.ToString());
+                    } else { // hackable object offline
+                        comRef.PrintToTerminal("ERROR: " + toHack.ToString() + " is offline.");
+                    }
+                } else { // hackable object not found
+                    comRef.PrintToTerminal("ERROR: Connection doesn't exist.");
+                }
+            }
+        }
+
+        // to find the object to hack
+        // returns the index, or -1 if it does not exist
+        private int FindHackableObjectByUID(List<HackableObject> list, string objUID) {
+            // look through all sequentially
+            for (int i = 0; i < list.Count; i++) {
+                // return index if found
+                if ( objUID.Equals(list[i].uid) )
+                    return i;
+            }
+            return -1;
+        }
+    }
+
+    class Portscan : Command {
+        public Portscan(Commands com) : base(com)
+        {
+            name = "portscan";
+            description = "scans environment and finds all routers in broad localization";
+            usage = "portscan";
+        }
+
+        public override void Action(string[] args)
+        {
+            /// TODO: needs to find all routers beyond scenes
+        }
     }
 
     public void RunCommand (string cmd) {
         string[] cmdSplit = cmd.Trim ().Split ();
         if (cmdSplit.Length > 0) {
             if (cmds.ContainsKey (cmdSplit[0])) {
-                cmds[cmdSplit[0]].action (cmdSplit.Skip (1).ToArray ());
+                cmds[cmdSplit[0]].Action (cmdSplit.Skip (1).ToArray ());
             } else {
                 PrintToTerminal ("<color=\"red\">Unknown Command: " + cmd + "</color>");
             }
@@ -124,7 +204,7 @@ public class Commands : MonoBehaviour {
         return GetComponent<Terminal> ().userAvailableLogs;
     }
 
-    public void halt () {
+    public void Halt () {
         Application.Quit ();
     }
 
