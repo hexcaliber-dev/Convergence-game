@@ -33,7 +33,7 @@ public class HackableObject : MonoBehaviour {
         SetEnabled(!active);
     }
 
-    public void SetEnabled (bool enabled) {
+    public virtual void SetEnabled (bool enabled) {
         active = enabled;
         if (active) {
             panel.blocksRaycasts = true;

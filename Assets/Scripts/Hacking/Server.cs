@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 public class Server : HackableObject {
 
     // server password
@@ -12,7 +12,7 @@ public class Server : HackableObject {
     public TMP_Text incorrectPassText; // incorrect password
     public TMP_Text nameText; // server name text
     // specific state of the server
-    public enum State { Locked, Unlocked };
+    public enum State { Locked, Unlocked }
     // UIs for locked server, unlocked server, etc. Corresponds to State enum for what UI it is.
     public List<CanvasGroup> screens;
     public State currState; // DO NOT ASSIGN DIRECTLY! Use SetState()
@@ -21,25 +21,34 @@ public class Server : HackableObject {
 
     // Start is called before the first frame update
     void Start () {
-        passInput.onSubmit.AddListener(delegate {authenticate(passInput.text);});
-        incorrectPassText.enabled = false;
-        // Unlock by default if no password specified.
-        if (password.Length == 0) {
-            authenticate("");
-        } else {
-            SetState (State.Locked);
-        }
-        nameText.text = uid;
-        explorerFiles = panel.GetComponentsInChildren<ExplorerFile>();
-        for (int i = 0; i < files.Count; i += 1) {
-            // print(files[i]);
-            explorerFiles[i].SetFile(files[i]);
-        }
+
     }
 
     // Update is called once per frame
     void Update () {
 
+    }
+
+    public override void SetEnabled (bool enabled) {
+        base.SetEnabled (enabled);
+        if (enabled) {
+            passInput.onSubmit.RemoveAllListeners();
+            passInput.text = "";
+            passInput.onSubmit.AddListener (delegate { authenticate (passInput.text); });
+            incorrectPassText.enabled = false;
+            // Unlock by default if no password specified.
+            if (password.Length == 0) {
+                authenticate ("");
+            } else {
+                SetState (State.Locked);
+            }
+            nameText.text = uid;
+            explorerFiles = panel.GetComponentsInChildren<ExplorerFile> ();
+            for (int i = 0; i < files.Count; i += 1) {
+                // print(files[i]);
+                explorerFiles[i].SetFile (files[i]);
+            }
+        }
     }
 
     /*  if password_in matches password, will unlock server
@@ -52,7 +61,7 @@ public class Server : HackableObject {
             // auth success (You a genius!)
             SetState (State.Unlocked);
             incorrectPassText.enabled = false;
-            terminal.PrintLine("<color=\"green\">Successfully logged into " + uid + "</color>");
+            terminal.PrintLine ("<color=\"green\">Successfully logged into " + uid + "</color>");
             return true;
         }
         // auth failed (You suck!)
