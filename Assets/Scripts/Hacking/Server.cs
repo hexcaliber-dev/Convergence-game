@@ -32,6 +32,7 @@ public class Server : HackableObject {
         nameText.text = uid;
         explorerFiles = panel.GetComponentsInChildren<ExplorerFile>();
         for (int i = 0; i < files.Count; i += 1) {
+            // print(files[i]);
             explorerFiles[i].SetFile(files[i]);
         }
     }

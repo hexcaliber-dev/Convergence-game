@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 // Represents one file in file explorer.
@@ -10,9 +10,14 @@ public class ExplorerFile : MonoBehaviour {
     private TextAsset file;
     // Start is called before the first frame update
     void Start () {
-        label = GetComponentInChildren<TMP_Text>();
-        GetComponent<CanvasGroup>().alpha = 0f;
-        GetComponent<Button>().onClick.AddListener(openFile);
+        label = GetComponentInChildren<TMP_Text> ();
+        GetComponent<Button> ().onClick.AddListener (openFile);
+        if (file != null) {
+            label.text = file.name + ".txt";
+            GetComponent<CanvasGroup> ().alpha = 1f;
+        } else {
+            GetComponent<CanvasGroup> ().alpha = 0f;
+        }
     }
 
     // Update is called once per frame
@@ -20,14 +25,16 @@ public class ExplorerFile : MonoBehaviour {
 
     }
 
-    public void SetFile(TextAsset f) {
+    public void SetFile (TextAsset f) {
         file = f;
-        label.text = file.name + ".txt";
-        GetComponent<CanvasGroup>().alpha = 1f;
+        if (label != null) {
+            label.text = file.name + ".txt";
+            GetComponent<CanvasGroup> ().alpha = 1f;
+        }
     }
 
-    public void openFile() {
-        GameObject.FindObjectOfType<Terminal>().OpenFile(file);
-        GameObject.FindObjectOfType<Terminal>().AddLogToFile(file);
+    public void openFile () {
+        GameObject.FindObjectOfType<Terminal> ().OpenFile (file);
+        GameObject.FindObjectOfType<Terminal> ().AddLogToFile (file);
     }
 }

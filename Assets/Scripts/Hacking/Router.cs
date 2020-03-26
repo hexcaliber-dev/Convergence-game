@@ -4,6 +4,12 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 public class Router : HackableObject {
+    
+    //list of all routers in the game so far.
+    public static List<Router> unlockedRouters;
+    //list of all routers' names regardless of if they are unlocked or not.
+    // TODO fix the list
+    public static string[] allRouterNames = new string[] {"router0", "router1", "router2"};
     // list of all hackable objects in room
     public List<HackableObject> connections;
 
@@ -15,11 +21,15 @@ public class Router : HackableObject {
         nameTxt.text = uid;
         string routerText = "";
         // need txt to show all contents of connections
+        connections.Add(this);
         foreach (HackableObject connection in connections) {
             routerText = AddConnection (routerText, connection);
             txt.rectTransform.sizeDelta += new Vector2 (0, 30f);
+            connection.SetEnabled(false);
         }
 
+        unlockedRouters = new List<Router>();
+        unlockedRouters.Add(GameObject.Find("Router0").GetComponent<Router>());
         txt.text = routerText;
     }
 
