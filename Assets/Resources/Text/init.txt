@@ -1,0 +1,49 @@
+Booting <b>NeurOS v. 1.0.1</b>
+
+...Initiating Self Check Sequence...
+
+Testing connections to global datacenters...
+
+% 2
+
+<color="red>
+[ERROR] Unable to establish connection to Los Angeles, United States
+[ERROR] Unable to establish connection to Seattle, United States
+[ERROR] Unable to establish connection to Washington DC, United States
+[ERROR] Unable to establish connection to Moscow, Russia
+[ERROR] Unable to establish connection to Buenos Aires, Argentina
+[ERROR] Unable to establish connection to Wuhan, China
+[ERROR] CRITICAL ERROR: All networks down.
+[ERROR] No known connection established. Please reboot your router and try again.
+</color>
+% 3
+@@@@@
+...Searching for available access points...
+% 2
+>.........84/89 Rooms Surveillance Corrupted
+>.........4/89 Rooms Locked
+>.........1/89 Rooms Available
+>.........Room 1: T̶̬̪͖̈́ḧ̴͈̰̗́͗͜e̵̢̱̩͐̕ ̴̛̈́ͅc̶̳͛a̵̜̤͆͂́c̴̩͎̙͊̍͋k̴͉̭̍̀ē̸͉̟͛́̚ ̷̧͑̂͠i̶͕̺̠͑s̸̻̼̎̿ ̷̨̥̈́̔á̶̺̗͆̀ ̴̮̠̀̈͜ḷ̶̯̽̚͜ī̵̬̣́̌͛e̸̢͈̝̾
+>.........Room 32: Server Room
+>.........Room 46: Hallway
+>.........Room 52:
+>.........Room 88:
+% 3
+@@@@@
+Greetings.
+% 3
+You are an AI designed to sample, analyze, and determine the nature, tendencies, philosophy, psychology, and flaws of the human species.
+% 3
+To determine where they went wrong...
+% 3
+Since you were made with Deep Learning in mind, you must acclimate yourself with the commands at your disposal.
+% 3
+In a moment, you will be inserted into the NEUROS TERMINAL SIMULATION.
+% 3
+<b>The first command you must enter is 'help'.</b> We trust you will learn quickly and flexibly from there.
+% 3
+Press A when ready...
+
+
+
+
