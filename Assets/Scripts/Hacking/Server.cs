@@ -110,6 +110,8 @@ public class Server : HackableObject {
                 color = Color.yellow;
             } else if (currState == State.Unlocked) {
                 color = Color.green;
+            } else if (currState == State.InProgram) {
+                color = Color.blue;
             }
         }
         foreach (UnityEngine.Experimental.Rendering.Universal.Light2D light in GetComponentsInChildren<UnityEngine.Experimental.Rendering.Universal.Light2D> ()) {

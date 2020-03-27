@@ -12,7 +12,7 @@ public class Terminal : MonoBehaviour {
 
     public TMP_InputField input;
     public TMP_Text output, fileNameText, fileViewText;
-    public ScrollRect scroll;
+    public ScrollRect scroll, fileScroll;
     public CanvasGroup fileView;
     const int MAX_LINES = 12;
     public Dictionary<string, TextAsset> userAvailableLogs; // Dictionary of available logs to the 'ls' command. Key is the file name (ending in .txt), value is the TextAsset object.
@@ -90,7 +90,7 @@ public class Terminal : MonoBehaviour {
         fileView.blocksRaycasts = true;
         fileNameText.text = DEFAULT_FILEDIR + "/" + file.name + ".txt";
         fileViewText.text = file.text;
-        scroll.verticalNormalizedPosition = 1f;
+        fileScroll.verticalNormalizedPosition = 0.99999f;
     }
 
     public void CloseFile () {

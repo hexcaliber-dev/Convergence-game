@@ -34,7 +34,9 @@ public class ExplorerFile : MonoBehaviour {
     }
 
     public void openFile () {
-        GameObject.FindObjectOfType<Terminal> ().OpenFile (file);
-        GameObject.FindObjectOfType<Terminal> ().AddLogToFile (file);
+        if (file != null) {
+            GameObject.FindObjectOfType<Terminal> ().OpenFile (file);
+            GameObject.FindObjectOfType<Terminal> ().AddLogToFile (file);
+        }
     }
 }
