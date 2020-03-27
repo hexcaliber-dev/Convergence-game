@@ -12,12 +12,14 @@ public class Server : HackableObject {
     public TMP_Text incorrectPassText; // incorrect password
     public TMP_Text nameText; // server name text
     // specific state of the server
-    public enum State { Locked, Unlocked }
+    public enum State { Locked, Unlocked, InProgram }
     // UIs for locked server, unlocked server, etc. Corresponds to State enum for what UI it is.
     public List<CanvasGroup> screens;
     public State currState; // DO NOT ASSIGN DIRECTLY! Use SetState()
     public TMP_InputField passInput; // Password input field
     private ExplorerFile[] explorerFiles;
+    public Button openRouterProgram;
+    public bool hasRouterProgram;
 
     // Start is called before the first frame update
     void Start () {
@@ -33,6 +35,18 @@ public class Server : HackableObject {
         base.SetEnabled (enabled);
         if (enabled) {
             passInput.onSubmit.RemoveAllListeners ();
+            if (hasRouterProgram) {
+                openRouterProgram.GetComponent<CanvasGroup> ().alpha = 1f;
+                openRouterProgram.GetComponent<CanvasGroup> ().blocksRaycasts = true;
+                openRouterProgram.onClick.RemoveAllListeners ();
+                openRouterProgram.onClick.AddListener (delegate {
+                    SetState (State.InProgram);
+                    GameObject.FindObjectOfType<RouterConnectProgram> ().OpenPanel (this);
+                });
+            } else {
+                openRouterProgram.GetComponent<CanvasGroup> ().alpha = 0f;
+                openRouterProgram.GetComponent<CanvasGroup> ().blocksRaycasts = false;
+            }
             passInput.text = "";
             passInput.onSubmit.AddListener (delegate { authenticate (passInput.text); });
             incorrectPassText.enabled = false;
@@ -75,7 +89,7 @@ public class Server : HackableObject {
     }
 
     // sets the state of the server to the given state    
-    void SetState (State newState) {
+    public void SetState (State newState) {
         currState = newState;
         for (int i = 0; i < screens.Count; i += 1) {
             if (i == (int) (newState)) {
@@ -98,7 +112,7 @@ public class Server : HackableObject {
                 color = Color.green;
             }
         }
-        foreach (UnityEngine.Experimental.Rendering.Universal.Light2D light in GetComponentsInChildren <UnityEngine.Experimental.Rendering.Universal.Light2D>()) {
+        foreach (UnityEngine.Experimental.Rendering.Universal.Light2D light in GetComponentsInChildren<UnityEngine.Experimental.Rendering.Universal.Light2D> ()) {
             light.color = color;
         }
     }
