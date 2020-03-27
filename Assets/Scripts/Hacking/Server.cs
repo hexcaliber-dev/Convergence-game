@@ -58,6 +58,9 @@ public class Server : HackableObject {
             }
             nameText.text = uid;
             explorerFiles = panel.GetComponentsInChildren<ExplorerFile> ();
+            foreach (ExplorerFile f in explorerFiles) {
+                f.GetComponent<CanvasGroup>().alpha = 0f;
+            }
             for (int i = 0; i < files.Count; i += 1) {
                 // print(files[i]);
                 explorerFiles[i].SetFile (files[i]);

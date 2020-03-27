@@ -14,4 +14,8 @@ public class DummyRouter : HackableObject {
         }
     }
 
+    public override string ToString() {
+        return uid + " (Router)";
+    }
+
 }

@@ -1,0 +1,9 @@
+Hello, and thank you for selecting the CONVERGENCE INC. TurtleBot (tm) as your ultimate security solution! We hope you have a wonderful time with it.
+
+QUICK START GUIDE:
+
+By default, the UID of your TurtleBot (tm) will be ‘turtle’. Once you connect to it, you can enter MOVE MODE by entering the command ‘move’.
+
+While in MOVE MODE, press the WASD keys to move around, just like an old school video game! Hit ESC to leave MOVE MODE.
+
+That’s really all you need to know about TurtleBot (tm)! Have fun :D
