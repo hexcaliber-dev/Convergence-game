@@ -25,16 +25,15 @@ class Ls : Command {
         }
 
         public override void Action (string[] args) {
-            print (args);
             if (args.Length == 0) {
                 comRef.PrintToTerminal ("List of available commands:");
-                foreach (var item in comRef.cmds) {
+                foreach (var item in Commands.cmds) {
                     comRef.PrintToTerminal (item.Key);
                 }
             } else {
-                if (comRef.cmds.ContainsKey (args[0])) {
-                    comRef.PrintToTerminal (args[0] + " - " + comRef.cmds[args[0]].description);
-                    comRef.PrintToTerminal ("Usage: " + comRef.cmds[args[0]].usage);
+                if (Commands.cmds.ContainsKey (args[0])) {
+                    comRef.PrintToTerminal (args[0] + " - " + Commands.cmds[args[0]].description);
+                    comRef.PrintToTerminal ("Usage: " + Commands.cmds[args[0]].usage);
                 } else
                     comRef.PrintToTerminal ("Command doesn't exist...");
             }
@@ -94,9 +93,9 @@ class Ls : Command {
 
                         comRef.PrintToTerminal("<color=\"green\">" + toHack.ToString() + " successfully hacked.</color>");
                         
-                        foreach (string i in toHack.AddCommands()) {
+                        /*foreach (string i in toHack.AddCommands()) {
                             cmds.Add(i, new Pan());
-                        }
+                        }*/
                         
                         // already active
                         // for loop through all hackable objects and turn them off

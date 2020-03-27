@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
-public abstract class Command {
+public abstract class Command{
         public string name;
         public string description;
         public string usage;
@@ -23,4 +23,5 @@ public abstract class Command {
             List<string> read_list = read_text.Split ('\n').ToList<string> (); // Split using Newline
             return read_list;
         }
+        
 }

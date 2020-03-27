@@ -20,7 +20,7 @@ public class Commands : MonoBehaviour {
         Debug.Log (this);
     }
 
-    void MakeMasterCmds()
+    /*void MakeMasterCmds()
     {
         master_cmds.Add ("ls", new Ls (this));
         master_cmds.Add ("help", new Help (this));
@@ -30,31 +30,11 @@ public class Commands : MonoBehaviour {
         master_cmds.Add("pan", Pan);
     }
 
-    public static Dictionary<string, Command> cmds = new Dictionary<string, Command> ();
+    
     // public static Dictionary<string, Class> master_cmds = new Dictionary<string, Command> ();
-
+    */
+    public static Dictionary<string, Command> cmds = new Dictionary<string, Command> ();
     
-
-    
-
-    class Pan : Command {
-
-        private GameObject camera;
-        public int speed;
-        public Pan (Commands com, GameObject target_camera) : base (com) {
-            name = "pan";
-            description = "turns pan mode on. Move camera left with A, and left with D. Press Q to exit pan mode";
-            usage = "pan";
-            camera = target_camera;
-            speed = 1;
-        }
-
-        public override void Action(string[] args) {
-            if (Input.GetKey(KeyCode.A)) { camera.transform.Translate(Vector2.left * Time.deltaTime * speed);}
-            else if (Input.GetKey(KeyCode.D)) { camera.transform.Translate(Vector2.right * Time.deltaTime * speed); }
-        }
-
-    }
 
     public void RunCommand (string cmd) {
         string[] cmdSplit = cmd.Trim ().Split ();
@@ -67,11 +47,11 @@ public class Commands : MonoBehaviour {
         }
     }
 
-    private void PrintToTerminal (string txt) {
+    public void PrintToTerminal (string txt) {
         GetComponent<Terminal> ().PrintLine (txt);
     }
 
-    private Dictionary<string, TextAsset> UserAvailableFiles () {
+    public Dictionary<string, TextAsset> UserAvailableFiles () {
         return GetComponent<Terminal> ().userAvailableLogs;
     }
 
