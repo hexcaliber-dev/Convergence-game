@@ -134,8 +134,7 @@ public class Commands : MonoBehaviour {
                         // for loop through all hackable objects and turn them off
                         /// TODO: Make sure to check if object should be made inactive
                         /// or not (i.e. camera, etc. should not be when others are hacked)
-                        foreach (HackableObject obj in router.connections)
-                            obj.SetEnabled (false);
+                        router.ClosePanel(toHack.panelNo);
 
                         toHack.SetEnabled (true);
 

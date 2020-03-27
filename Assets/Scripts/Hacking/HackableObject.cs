@@ -6,6 +6,8 @@ public class HackableObject : MonoBehaviour {
 
     // UI for Hackable Object
     public CanvasGroup panel;
+    // 1 or 2. 1 is the larger panel on the top
+    public int panelNo;
     // Is the UI active?
     public bool active = false;
     // whether or not the device can be accessed
