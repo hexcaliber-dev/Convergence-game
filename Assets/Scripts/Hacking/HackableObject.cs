@@ -17,6 +17,8 @@ public class HackableObject : MonoBehaviour {
 
     public Terminal terminal;
 
+    public string[] command_library;
+
     // public enum Type {Camera, Robot, Phone, Printer, TV, Light, Door, Server, Router};
 
     // Start is called before the first frame update
@@ -49,4 +51,8 @@ public class HackableObject : MonoBehaviour {
     public override string ToString () {
         return uid + " (" + GetType ().Name + ")";
     }
+
+    public string[] AddCommands () { return command_library; }
+    public virtual GameObject AddObjects () { return this.gameObject; }
+
 }

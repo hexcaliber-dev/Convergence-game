@@ -11,6 +11,7 @@ public class Commands : MonoBehaviour {
 
     // For testing purposes
     void Start () {
+        
         cmds.Add ("ls", new Ls (this));
         cmds.Add ("help", new Help (this));
         cmds.Add ("read", new Read (this));
@@ -19,7 +20,18 @@ public class Commands : MonoBehaviour {
         Debug.Log (this);
     }
 
-    private Dictionary<string, Command> cmds = new Dictionary<string, Command> ();
+    void MakeMasterCmds()
+    {
+        master_cmds.Add ("ls", new Ls (this));
+        master_cmds.Add ("help", new Help (this));
+        master_cmds.Add ("read", new Read (this));
+        master_cmds.Add ("hack", new Hack (this));
+        master_cmds.Add ("portscan", new Portscan (this));
+        master_cmds.Add("pan", Pan);
+    }
+
+    public static Dictionary<string, Command> cmds = new Dictionary<string, Command> ();
+    public static Dictionary<string, Class> master_cmds = new Dictionary<string, Command> ();
 
     abstract class Command {
         public string name;
@@ -129,7 +141,11 @@ public class Commands : MonoBehaviour {
                     if (toHack.online && !toHack.active) { // hackable object found and not 
 
                         comRef.PrintToTerminal("<color=\"green\">" + toHack.ToString() + " successfully hacked.</color>");
-
+                        
+                        /*foreach (string i in toHack.AddCommands()) {
+                            cmds.Add(i, new Pan());
+                        }*/
+                        
                         // already active
                         // for loop through all hackable objects and turn them off
                         /// TODO: Make sure to check if object should be made inactive
@@ -187,6 +203,25 @@ public class Commands : MonoBehaviour {
                 comRef.PrintToTerminal ("Usage: portscan");
             }
         }
+    }
+
+    class Pan : Command {
+
+        private GameObject camera;
+        public int speed;
+        public Pan (Commands com, GameObject target_camera) : base (com) {
+            name = "pan";
+            description = "turns pan mode on. Move camera left with A, and left with D. Press Q to exit pan mode";
+            usage = "pan";
+            camera = target_camera;
+            speed = 1;
+        }
+
+        public override void Action(string[] args) {
+            if (Input.GetKey(KeyCode.A)) { camera.transform.Translate(Vector2.left * Time.deltaTime * speed);}
+            else if (Input.GetKey(KeyCode.D)) { camera.transform.Translate(Vector2.right * Time.deltaTime * speed); }
+        }
+
     }
 
     public void RunCommand (string cmd) {
