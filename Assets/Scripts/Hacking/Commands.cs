@@ -8,8 +8,8 @@ using UnityEngine;
 public class Commands : MonoBehaviour {
     public TextAsset allFiles;
     public TextAsset allCommands;
+    public static Dictionary<string, Command> cmds = new Dictionary<string, Command> ();
 
-    // For testing purposes
     void Start () {
         
         cmds.Add ("ls", new Ls (this));
@@ -20,20 +20,7 @@ public class Commands : MonoBehaviour {
         Debug.Log (this);
     }
 
-    /*void MakeMasterCmds()
-    {
-        master_cmds.Add ("ls", new Ls (this));
-        master_cmds.Add ("help", new Help (this));
-        master_cmds.Add ("read", new Read (this));
-        master_cmds.Add ("hack", new Hack (this));
-        master_cmds.Add ("portscan", new Portscan (this));
-        master_cmds.Add("pan", Pan);
-    }
-
     
-    // public static Dictionary<string, Class> master_cmds = new Dictionary<string, Command> ();
-    */
-    public static Dictionary<string, Command> cmds = new Dictionary<string, Command> ();
     
 
     public void RunCommand (string cmd) {
