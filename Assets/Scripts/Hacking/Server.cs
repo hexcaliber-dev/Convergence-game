@@ -32,7 +32,7 @@ public class Server : HackableObject {
     public override void SetEnabled (bool enabled) {
         base.SetEnabled (enabled);
         if (enabled) {
-            passInput.onSubmit.RemoveAllListeners();
+            passInput.onSubmit.RemoveAllListeners ();
             passInput.text = "";
             passInput.onSubmit.AddListener (delegate { authenticate (passInput.text); });
             incorrectPassText.enabled = false;
@@ -49,6 +49,7 @@ public class Server : HackableObject {
                 explorerFiles[i].SetFile (files[i]);
             }
         }
+        UpdateLight ();
     }
 
     /*  if password_in matches password, will unlock server
@@ -62,12 +63,14 @@ public class Server : HackableObject {
             SetState (State.Unlocked);
             incorrectPassText.enabled = false;
             terminal.PrintLine ("<color=\"green\">Successfully logged into " + uid + ".</color>");
+            UpdateLight ();
             return true;
         }
         // auth failed (You suck!)
         SetState (State.Locked);
         incorrectPassText.enabled = true;
         passInput.text = "";
+        UpdateLight ();
         return false;
     }
 
@@ -82,6 +85,21 @@ public class Server : HackableObject {
                 screens[i].alpha = 0f;
                 screens[i].blocksRaycasts = false;
             }
+        }
+        UpdateLight ();
+    }
+
+    void UpdateLight () {
+        Color color = Color.red;
+        if (active) {
+            if (currState == State.Locked) {
+                color = Color.yellow;
+            } else if (currState == State.Unlocked) {
+                color = Color.green;
+            }
+        }
+        foreach (UnityEngine.Experimental.Rendering.Universal.Light2D light in GetComponentsInChildren <UnityEngine.Experimental.Rendering.Universal.Light2D>()) {
+            light.color = color;
         }
     }
 }
