@@ -22,7 +22,6 @@ public class HackableCamera : HackableObject {
 
     // Update is called once per frame
     void Update () {
-        Debug.Log(panful);
         if (panful)
         {
             if (Input.GetKey(KeyCode.A)) { GetComponent<Camera>().transform.Translate(Vector2.left * Time.deltaTime * speed);}
@@ -46,7 +45,6 @@ public class HackableCamera : HackableObject {
         
         public override void Action(string[] args) {
             camera.panful = true;
-            Debug.Log("HELOOOOO");
         }
 
     }
@@ -55,7 +53,7 @@ public class HackableCamera : HackableObject {
     public override void AddCommands(Dictionary<string, Command> library)
     {
         foreach (KeyValuePair<string, Command> entry in command_library)
-                library.Add(entry.Key, entry.Value);
+            library.Add(entry.Key, entry.Value);
     }  
 
     // public override GameObject AddObjects () { return this.gameObject; }
