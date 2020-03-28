@@ -54,11 +54,7 @@ public class HackableObject : MonoBehaviour {
         return uid + " (" + GetType ().Name + ")";
     }
 
-    public void AddCommands ( Dictionary<string, Command> library ) { 
-        foreach (KeyValuePair<string, Command> entry in command_library)
-            library.Add(entry.Key, entry.Value);
-         
-    }
+    public virtual void AddCommands ( Dictionary<string, Command> library ) {}
     public virtual GameObject AddObjects () { return this.gameObject; }
 
 }
