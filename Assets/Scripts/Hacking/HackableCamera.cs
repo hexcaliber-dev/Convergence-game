@@ -28,6 +28,9 @@ public class HackableCamera : HackableObject {
                 GetComponent<Camera> ().transform.Translate (Vector2.left * Time.deltaTime * speed);
             } else if (Input.GetKey (KeyCode.D) && transform.position.x < UPPER_BOUND) {
                 GetComponent<Camera> ().transform.Translate (Vector2.right * Time.deltaTime * speed);
+            } else if (Input.GetKey (KeyCode.Q)) {
+                panful = false;
+                terminal.PrintLine ("<color=\"blue\">Panning Disabled.</color>");
             }
         }
     }
@@ -45,7 +48,7 @@ public class HackableCamera : HackableObject {
 
         public override void Action (string[] args) {
             camera.panful = true;
-            comRef.PrintToTerminal("<color=\"blue\">Panning Enabled. Press A and D to pan</color>");
+            comRef.PrintToTerminal ("<color=\"blue\">Panning Enabled. Press A and D to pan</color>");
         }
     }
 

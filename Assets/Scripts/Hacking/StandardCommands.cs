@@ -27,6 +27,7 @@ class Ls : Command {
         public override void Action (string[] args) {
             if (args.Length == 0) {
                 comRef.PrintToTerminal ("List of available commands:");
+                comRef.PrintToTerminal ("Type help <command> for more information.");
                 foreach (var item in Commands.cmds) {
                     comRef.PrintToTerminal (item.Key);
                 }
@@ -98,9 +99,7 @@ class Ls : Command {
                         /// TODO: Make sure to check if object should be made inactive
                         /// or not (i.e. camera, etc. should not be when others are hacked)
                         router.ClosePanel(toHack.panelNo);
-
                         toHack.SetEnabled (true);
-
 
                         // FAILURE PATH
                     } else if (toHack.online) { // hackable object active

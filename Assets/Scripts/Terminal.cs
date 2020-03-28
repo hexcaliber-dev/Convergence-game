@@ -17,7 +17,7 @@ public class Terminal : MonoBehaviour {
     const int MAX_LINES = 12;
     public Dictionary<string, TextAsset> userAvailableLogs; // Dictionary of available logs to the 'ls' command. Key is the file name (ending in .txt), value is the TextAsset object.
     const float SCROLL_BUTTON_SENSITIVITY = 0.1f;
-    const int TEXT_HEIGHT = 18; // how much should be added 
+    const int TEXT_HEIGHT = 25; // how much should be added 
     const string DEFAULT_FILEDIR = "/home/neuros"; // what should be printed in filename text when no files are open
 
     /// The currently selected command. Used for up-arrow history completion.
@@ -71,7 +71,7 @@ public class Terminal : MonoBehaviour {
 
     public void PrintLine (string line) {
         output.text += " " + line + "\n";
-        output.rectTransform.sizeDelta += new Vector2 (0, 20f);
+        output.rectTransform.sizeDelta += new Vector2 (0, TEXT_HEIGHT);
         scroll.verticalNormalizedPosition = 0.00001f;
     }
 
