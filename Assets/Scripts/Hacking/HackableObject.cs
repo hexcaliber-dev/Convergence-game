@@ -17,12 +17,14 @@ public class HackableObject : MonoBehaviour {
 
     public Terminal terminal;
 
-    public string[] command_library;
+    public Dictionary<string, Command> command_library;
 
     // public enum Type {Camera, Robot, Phone, Printer, TV, Light, Door, Server, Router};
 
     // Start is called before the first frame update
-    void Start () { }
+    void Start () { 
+        command_library = new Dictionary<string, Command>();
+    }
 
     // Update is called once per frame
     void Update () {
@@ -52,7 +54,11 @@ public class HackableObject : MonoBehaviour {
         return uid + " (" + GetType ().Name + ")";
     }
 
-    public string[] AddCommands () { return command_library; }
+    public void AddCommands ( Dictionary<string, Command> library ) { 
+        foreach (KeyValuePair<string, Command> entry in command_library)
+            library.Add(entry.Key, entry.Value);
+         
+    }
     public virtual GameObject AddObjects () { return this.gameObject; }
 
 }

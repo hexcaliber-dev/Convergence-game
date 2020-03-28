@@ -93,9 +93,7 @@ class Ls : Command {
 
                         comRef.PrintToTerminal("<color=\"green\">" + toHack.ToString() + " successfully hacked.</color>");
                         
-                        /*foreach (string i in toHack.AddCommands()) {
-                            cmds.Add(i, new Pan());
-                        }*/
+                        toHack.AddCommands(Commands.cmds);
                         
                         // already active
                         // for loop through all hackable objects and turn them off
