@@ -1,0 +1,5 @@
+Every room in the CONVERGENCE, INC. laboratories is equipped with a state-of-the-art ROUTERMAX PRO(tm) router for fast and secure network connections.
+
+To enable a router, you will need the provided ‘routerconnect.exe’ utility. Enter the router ID (detect using ‘portscan’) and the 5-digit router access code.
+
+For additional support, please consult the IT Help Desk by calling (808) 661-2050.
