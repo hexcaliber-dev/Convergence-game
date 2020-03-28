@@ -3634,6 +3634,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 377884243667712446, guid: 47736d623f6b4fe4691ebfb46a278c47,
+        type: 3}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 377884243667712447, guid: 47736d623f6b4fe4691ebfb46a278c47,
         type: 3}
       propertyPath: orthographic
@@ -4112,7 +4117,7 @@ PrefabInstance:
     - target: {fileID: 1850531237950370599, guid: 9b580f7164d1c314b832a46b4f46b0e7,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1020.3122
+      value: 884.79095
       objectReference: {fileID: 0}
     - target: {fileID: 8955599051975731674, guid: 9b580f7164d1c314b832a46b4f46b0e7,
         type: 3}
