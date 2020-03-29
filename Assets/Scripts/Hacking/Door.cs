@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : MonoBehaviour
+public class Door : PoweredObject
 {
 
     public Animator anim;
     public bool openInitially;
-    [SerializeField] int charge_req;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +16,10 @@ public class Door : MonoBehaviour
             OpenDoor();
     }
 
-    void OpenDoor(){ anim.SetTrigger("Open");}
-    void CloseDoor(){ anim.SetTrigger("Close"); }
+    public override void PowerOnAction(){ OpenDoor();}
+    public override void PowerOffAction() { CloseDoor(); }
+
+    private void OpenDoor(){ anim.SetTrigger("Open");}
+    private void CloseDoor(){ anim.SetTrigger("Close"); }
 
 }
