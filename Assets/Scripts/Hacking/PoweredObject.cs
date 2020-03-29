@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class PoweredObject : MonoBehaviour {
     public int id;
     public Generator generator;
-    private bool powered;
+    protected bool powered;
 
     public void SetPower(bool powerState) {
         powered = powerState;
