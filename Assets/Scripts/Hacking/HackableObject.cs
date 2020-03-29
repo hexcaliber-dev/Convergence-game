@@ -22,14 +22,14 @@ public class HackableObject : MonoBehaviour {
         // public enum Type {Camera, Robot, Phone, Printer, TV, Light, Door, Server, Router};
 
         // Start is called before the first frame update
-        void Start () {
-            command_library = new Dictionary<string, Command> ();
-        }
+        // void Start () {
+        //     command_library = new Dictionary<string, Command> ();
+        // }
 
         // Update is called once per frame
-        void Update () {
+        // void Update () {
 
-        }
+        // }
 
         public virtual void HackMessage () {
             terminal.PrintLine ("<color='green'>Successfully connected to " + ToString () + "</color>");

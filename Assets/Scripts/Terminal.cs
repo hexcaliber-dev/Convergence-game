@@ -71,7 +71,7 @@ public class Terminal : MonoBehaviour {
 
     public void PrintLine (string line) {
         output.text += " " + line + "\n";
-        output.rectTransform.sizeDelta += new Vector2 (0, TEXT_HEIGHT);
+        // output.rectTransform.sizeDelta += new Vector2 (0, TEXT_HEIGHT);
         scroll.verticalNormalizedPosition = 0.00001f;
     }
 
