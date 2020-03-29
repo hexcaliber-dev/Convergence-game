@@ -14,6 +14,7 @@ public class Door : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    
+    void OpenDoor(){ anim.SetTrigger("Open");}
+    void CloseDoor(){ anim.SetTrigger("Close"); }
 
 }
