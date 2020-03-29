@@ -6,6 +6,7 @@ using UnityEngine.UI;
 // Any object that can be powered by a generator should inherit this class.
 public class PoweredObject : MonoBehaviour {
     public int id;
+    public string objName;
     public Generator generator;
     private bool powered;
 
@@ -17,7 +18,19 @@ public class PoweredObject : MonoBehaviour {
             PowerOffAction();
         }
     }
+
+    public void TogglePower() {
+        SetPower(!powered);
+    }
+
+    public bool IsPowered() {
+        return powered;
+    }
     
     public virtual void PowerOnAction() {}
     public virtual void PowerOffAction() {}
+
+    public override string ToString() {
+        return id + " (" + objName + ")";
+    }
 }
