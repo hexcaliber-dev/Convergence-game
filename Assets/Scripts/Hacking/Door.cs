@@ -6,12 +6,15 @@ public class Door : MonoBehaviour
 {
 
     public Animator anim;
+    public bool openInitially;
     [SerializeField] int charge_req;
 
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
+        if (openInitially)
+            OpenDoor();
     }
 
     void OpenDoor(){ anim.SetTrigger("Open");}
