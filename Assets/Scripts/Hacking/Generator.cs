@@ -29,6 +29,11 @@ public class Generator : HackableObject {
         base.SetEnabled (enabled);
         UpdateDisplay ();
         nameText.text = uid;
+        if (enabled) {
+            AudioHelper.PlaySound("buzzing", true);
+        } else {
+            AudioHelper.Stop();
+        }
     }
 
     // Sets the power state of object ID to POWER_STATE.
