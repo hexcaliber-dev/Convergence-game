@@ -12,8 +12,7 @@ public class Door : PoweredObject
     void Start()
     {
         anim = GetComponent<Animator>();
-        if (openInitially)
-            OpenDoor();
+        SetPower(openInitially);
     }
 
     public override void PowerOnAction(){ OpenDoor();}

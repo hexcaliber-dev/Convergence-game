@@ -8,7 +8,7 @@ public class PoweredObject : MonoBehaviour {
     public int id;
     public string objName;
     public Generator generator;
-    private bool powered;
+    protected bool powered;
 
     public void SetPower(bool powerState) {
         powered = powerState;
