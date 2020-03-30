@@ -8,10 +8,7 @@ public class RegularLight : PoweredObject
     public bool onInitially;
 
     // Start is called before the first frame update
-    void Start()
-    {
-       SetPower(onInitially);
-    }
+    void Start() { Reset(); }
 
     // Update is called once per frame
     void Update()
@@ -32,8 +29,6 @@ public class RegularLight : PoweredObject
             light.enabled = false;
     }
 
-    public void reset(){
-        
-    }
+    public void Reset(){ SetPower(onInitially); }
 
 }

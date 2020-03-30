@@ -12,13 +12,14 @@ public class Door : PoweredObject
     void Start()
     {
         anim = GetComponent<Animator>();
-        SetPower(openInitially);
+        reset();
     }
 
     public override void PowerOnAction(){ OpenDoor();}
     public override void PowerOffAction() { CloseDoor(); }
 
-    private void OpenDoor(){ anim.SetTrigger("Open");}
-    private void CloseDoor(){ anim.SetTrigger("Close"); }
+    public void OpenDoor(){ anim.SetTrigger("Open");}
+    public void CloseDoor(){ anim.SetTrigger("Close"); }
+    public void reset(){ SetPower(openInitially); }
 
 }
