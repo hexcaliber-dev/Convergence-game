@@ -22,14 +22,18 @@ public class RegularLight : PoweredObject
     public override void PowerOnAction(){ LightsOn(); }
     public override void PowerOffAction(){ LightsOff(); }
 
-    void LightsOn(){  
+    public void LightsOn(){  
         foreach (UnityEngine.Experimental.Rendering.Universal.Light2D light in GetComponentsInChildren<UnityEngine.Experimental.Rendering.Universal.Light2D> ())
             light.enabled = true;
     }
 
-    void LightsOff(){
+    public void LightsOff(){
         foreach (UnityEngine.Experimental.Rendering.Universal.Light2D light in GetComponentsInChildren<UnityEngine.Experimental.Rendering.Universal.Light2D> ())
             light.enabled = false;
+    }
+
+    public void reset(){
+        
     }
 
 }
