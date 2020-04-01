@@ -20,6 +20,6 @@ public class Door : PoweredObject
 
     public void OpenDoor(){ anim.SetTrigger("Open");}
     public void CloseDoor(){ anim.SetTrigger("Close"); }
-    public void reset(){ SetPower(openInitially); }
+    public void reset(){ }
 
 }
