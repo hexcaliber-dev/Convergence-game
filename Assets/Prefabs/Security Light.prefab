@@ -27,14 +27,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 937117657194438955}
-  m_LocalRotation: {x: 0, y: 0, z: 0.9999995, w: -0.0009972772}
+  m_LocalRotation: {x: 0, y: 0, z: -0.9999995, w: 0.0009949715}
   m_LocalPosition: {x: 6.55, y: 3.85, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 2204792017438634864}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -179.886}
 --- !u!212 &4561132914989585283
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -74,10 +74,10 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 092570f95c9a3c345897f4e31c79749b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 0
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 0.2, y: 0.2}
   m_AdaptiveModeThreshold: 0.5
@@ -143,7 +143,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.2, y: 0.2}
+    oldSize: {x: 0.32, y: 0.32}
     newSize: {x: 0.2, y: 0.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -168,6 +168,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5683657fd4523c94fb11a90bba43b885, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
+  objName: 
+  generator: {fileID: 0}
+  onInitially: 0
+  past_doors: []
 --- !u!1 &2206529345624477021
 GameObject:
   m_ObjectHideFlags: 0

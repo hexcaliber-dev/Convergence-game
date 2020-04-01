@@ -26,12 +26,12 @@ PrefabInstance:
     - target: {fileID: 937117657194438955, guid: ae008a4b691ad234c8da6716bd78351a,
         type: 3}
       propertyPath: m_Name
-      value: Regular Light
+      value: Regular Light Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3729375077493775266, guid: ae008a4b691ad234c8da6716bd78351a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.32
+      value: 8.01
       objectReference: {fileID: 0}
     - target: {fileID: 3729375077493775266, guid: ae008a4b691ad234c8da6716bd78351a,
         type: 3}
@@ -83,6 +83,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4561132914989585283, guid: ae008a4b691ad234c8da6716bd78351a,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a908ecbc9cb1d674993bdbd0133b5082,
+        type: 3}
     - target: {fileID: 6594596601332194674, guid: ae008a4b691ad234c8da6716bd78351a,
         type: 3}
       propertyPath: m_Color.r
