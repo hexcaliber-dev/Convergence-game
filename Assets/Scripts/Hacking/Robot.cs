@@ -81,7 +81,11 @@ public class Robot : HackableObject {
         // Flip Robot
         if (newDirRight != facingRight) {
             facingRight = newDirRight;
-            gameObject.transform.Rotate (new Vector2 (0, 180));
+            foreach (Transform t in GetComponentsInChildren<Transform>()) {
+                if (t != transform && t.GetComponent<Camera>() == null) {
+                    t.Rotate (new Vector2 (0, 180));
+                }
+            }
         }
 
         // Movement Animation
