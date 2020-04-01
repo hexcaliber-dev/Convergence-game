@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1032,6 +1032,21 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 5396918688681821326, guid: 1c41bf60a90d6354fb6046776209663b,
+        type: 3}
+      propertyPath: panel
+      value: 
+      objectReference: {fileID: 976973475}
+    - target: {fileID: 5396918688681821326, guid: 1c41bf60a90d6354fb6046776209663b,
+        type: 3}
+      propertyPath: panelNo
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5396918688681821326, guid: 1c41bf60a90d6354fb6046776209663b,
+        type: 3}
+      propertyPath: terminal
+      value: 
+      objectReference: {fileID: 8955599053680439728}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c41bf60a90d6354fb6046776209663b, type: 3}
 --- !u!4 &300128802 stripped
@@ -2712,6 +2727,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3729375077493775266, guid: ae008a4b691ad234c8da6716bd78351a,
     type: 3}
   m_PrefabInstance: {fileID: 945336338}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &976973475 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 7690068984149633115, guid: 9b580f7164d1c314b832a46b4f46b0e7,
+    type: 3}
+  m_PrefabInstance: {fileID: 6782323320596533903}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &990845294
 PrefabInstance:

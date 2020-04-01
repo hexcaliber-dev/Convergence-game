@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Robot : HackableObject {
 
+    // Set to true when move command is set
+    private bool canMove = false;
     // speed of robot in game
     public float movementSpeed;
 
@@ -26,18 +28,19 @@ public class Robot : HackableObject {
     private int horiz, vert;
 
     // runs at start of game
-    void Start() {
-        rigidBody = GetComponent<Rigidbody2D>();
+    void Start () {
+        rigidBody = GetComponent<Rigidbody2D> ();
         movingKeys = 0;
         horiz = vert = 0;
+        command_library = new Dictionary<string, Command> { {"move", new Move (GameObject.FindObjectOfType<Commands> (), this) } };
     }
 
     // runs every frame
-    void Update() {
+    void Update () {
 
         // if not active,
         // no functionality available
-        if (!active)
+        if (!active || !canMove)
             return;
 
         // variables needed to determine state changes
@@ -52,24 +55,23 @@ public class Robot : HackableObject {
 
         // Determine if robot is in state of moving or not
         // Also determine state change
-        if (Input.GetKeyDown(KeyCode.A)) {
+        if (Input.GetKeyDown (KeyCode.A)) {
             newMovingKeys++;
             newDirRight = false;
             horiz -= 1;
         }
-        if (Input.GetKeyDown(KeyCode.D)) {
+        if (Input.GetKeyDown (KeyCode.D)) {
             newDirRight = true;
             horiz += 1;
             newMovingKeys++;
         }
-        if (Input.GetKeyUp(KeyCode.A)) {
+        if (Input.GetKeyUp (KeyCode.A)) {
             newMovingKeys--;
             horiz += 1;
             if (horiz > 0)
                 newDirRight = true;
         }
-        if (Input.GetKeyUp(KeyCode.D))
-        {
+        if (Input.GetKeyUp (KeyCode.D)) {
             newMovingKeys--;
             horiz -= 1;
             if (horiz < 0)
@@ -77,10 +79,9 @@ public class Robot : HackableObject {
         }
 
         // Flip Robot
-        if (newDirRight != facingRight)
-        {
+        if (newDirRight != facingRight) {
             facingRight = newDirRight;
-            gameObject.transform.Rotate(new Vector2(0, 180));
+            gameObject.transform.Rotate (new Vector2 (0, 180));
         }
 
         // Movement Animation
@@ -88,21 +89,37 @@ public class Robot : HackableObject {
             // only one key (A or D), not both
             // must be active
             if (newMovingKeys == 1) {
-                baseAnimator.ResetTrigger("Idle");
-                baseAnimator.SetTrigger("Motion");
-                baseAnimator.SetBool("Moving", moving=true);
+                baseAnimator.ResetTrigger ("Idle");
+                baseAnimator.SetTrigger ("Motion");
+                baseAnimator.SetBool ("Moving", moving = true);
             } else {
-                baseAnimator.ResetTrigger("Motion");
-                baseAnimator.SetTrigger("Idle");
-                baseAnimator.SetBool("Moving", moving=false);
+                baseAnimator.ResetTrigger ("Motion");
+                baseAnimator.SetTrigger ("Idle");
+                baseAnimator.SetBool ("Moving", moving = false);
             }
             movingKeys = newMovingKeys;
         }
 
         // Vector Change
-        Vector2 move = new Vector2(horiz, vert);
+        Vector2 move = new Vector2 (horiz, vert);
         move = move.normalized * movementSpeed * Time.deltaTime;
-        rigidBody.MovePosition(rigidBody.position + move);
+        rigidBody.MovePosition (rigidBody.position + move);
+    }
+
+    class Move : Command {
+
+        private Robot robotRef;
+        public Move (Commands com, Robot robot) : base (com) {
+            name = "move";
+            description = "turns move mode on. Move robot left with A, right with D. Press Q to quit.";
+            usage = "move";
+            robotRef = robot;
+        }
+
+        public override void Action (string[] args) {
+            robotRef.canMove = true;
+            comRef.PrintToTerminal ("<color=\"blue\">Robot Move Enabled. Press A and D to move</color>");
+        }
     }
 
 }
