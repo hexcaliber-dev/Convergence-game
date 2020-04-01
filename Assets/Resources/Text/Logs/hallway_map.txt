@@ -1,0 +1,26 @@
+HALLWAY MAP
+===============
+Generator1
+Light 202 (generator1)
+== DOOR ==
+Light 205 (generator1)
+== DOOR ==
+Generator2
+== DOOR ==
+Security Light 987 (generator2)
+== DOOR ==
+Generator3
+== DOOR ==
+Generator4
+Light 300 (generator4)
+== DOOR ==
+Light 375 (generator4)
+== DOOR ==
+Security Light 404 (generator4)
+== DOOR ==
+Security Light 414 (generator3)
+== DOOR ==
+Light 610 (generator3)
+== DOOR ==
+===============
+END OF HALLWAY

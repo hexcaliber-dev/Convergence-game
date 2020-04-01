@@ -1,0 +1,7 @@
+This hallway is equipped with several CONVERGENCE INC. Safety Generators (tm) which can restore power in the case of emergencies.
+
+Every generator is equipped with an accessible control panel - here, you may enter the ID number of the device that requires power (see hallway_map.txt for light ID’s; door ID’s are printed on the wall).
+
+By default, Security Lights ensure all intruders are detected and dealt with automatically. To disable them, reroute power to their corresponding ID’s.
+
+NOTE: Do not exceed generator power capacity!!!
