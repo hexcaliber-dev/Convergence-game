@@ -30,9 +30,9 @@ public class Generator : HackableObject {
         UpdateDisplay ();
         nameText.text = uid;
         if (enabled) {
-            AudioHelper.PlaySound("buzzing", true);
+            AudioHelper.PlaySound ("buzzing", true);
         } else {
-            AudioHelper.Stop();
+            AudioHelper.Stop ();
         }
     }
 
@@ -53,20 +53,24 @@ public class Generator : HackableObject {
                         obj.SetPower (true);
                         terminal.PrintLine ("<color=\"green\">" + obj.ToString () + " successfully powered</color>");
                         StartCoroutine (ShowStatusImage (true, 1f));
+                        AudioHelper.PlaySound ("correct", false);
                     } else {
                         terminal.PrintLine ("<color=\"red\">Max charge exceeded. Could not enable " + obj.ToString () + "</color>");
                         StartCoroutine (ShowStatusImage (false, 1f));
+                        AudioHelper.PlaySound ("error", false);
                     }
                 } else {
                     terminal.PrintLine ("<color=\"green\">" + obj.ToString () + " turned off successfully</color>");
                     currCharge -= 1;
                     StartCoroutine (ShowStatusImage (true, 1f));
                     obj.SetPower (false);
+                    AudioHelper.PlaySound ("correct", false);
                 }
 
             } else {
                 terminal.PrintLine ("<color=\"red\">" + id + " not found in " + uid + "</color>");
                 StartCoroutine (ShowStatusImage (false, 1f));
+                AudioHelper.PlaySound ("error", false);
             }
         }
         UpdateDisplay ();

@@ -19,10 +19,12 @@ public class Door : PoweredObject {
     public void OpenDoor () {
         anim.ResetTrigger ("Close");
         anim.SetTrigger ("Open");
+        AudioHelper.PlaySound ("door", false);
     }
     public void CloseDoor () {
-        anim.ResetTrigger("Open");
+        anim.ResetTrigger ("Open");
         anim.SetTrigger ("Close");
+        AudioHelper.PlaySound ("door", false);
     }
     public void reset () { }
 

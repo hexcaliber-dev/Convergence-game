@@ -103,13 +103,15 @@ public class Robot : HackableObject {
             // only one key (A or D), not both
             // must be active
             if (newMovingKeys == 1) {
-                baseAnimator.ResetTrigger ("Idle");
+                baseAnimator.ResetTrigger ("Idle");                                                
                 baseAnimator.SetTrigger ("Motion");
                 baseAnimator.SetBool ("Moving", moving = true);
+                AudioHelper.PlaySound("robot", true);
             } else {
                 baseAnimator.ResetTrigger ("Motion");
                 baseAnimator.SetTrigger ("Idle");
                 baseAnimator.SetBool ("Moving", moving = false);
+                AudioHelper.Stop();
             }
             movingKeys = newMovingKeys;
         }

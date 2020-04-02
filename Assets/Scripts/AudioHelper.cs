@@ -7,18 +7,24 @@ public class AudioHelper : MonoBehaviour {
 
     public static Dictionary<string, AudioClip> staticClips;
     public List<AudioClip> audioClips;
-    private static AudioSource StaticGetAudioSource () {
-        return GameObject.FindObjectOfType<AudioHelper> ().GetComponent<AudioSource> ();
-    }
+
+    private static AudioSource[] audioSources;
+
     public static void PlaySound (string soundName, bool isLoop) {
-        AudioSource src = StaticGetAudioSource ();
-        src.loop = isLoop;
-        src.clip = staticClips[soundName];
-        src.Play ();
+        foreach (AudioSource src in audioSources) {
+            if (!src.isPlaying) {
+                src.loop = isLoop;
+                src.clip = staticClips[soundName];
+                src.Play ();
+                return;
+            }
+        }
     }
     public static void Stop () {
-        StaticGetAudioSource ().Stop ();
-        StaticGetAudioSource ().loop = false;
+        foreach (AudioSource src in audioSources) {
+            src.Stop ();
+            src.loop = false;
+        }
     }
 
     // Start is called before the first frame update
@@ -27,6 +33,8 @@ public class AudioHelper : MonoBehaviour {
         foreach (AudioClip clip in audioClips) {
             staticClips.Add (clip.name, clip);
         }
+
+        audioSources = GetComponentsInChildren<AudioSource>();
     }
 
     // Update is called once per frame
