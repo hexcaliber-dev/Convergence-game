@@ -1,7 +1,7 @@
 HALLWAY MAP
 ===============
 Generator1
-Light 202 (generator1)
+Light 202 (external generator)
 == DOOR ==
 Light 205 (generator1)
 == DOOR ==
