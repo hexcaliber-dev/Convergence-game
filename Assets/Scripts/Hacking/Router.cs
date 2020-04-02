@@ -26,18 +26,34 @@ public class Router : HackableObject {
         connections.Insert (0, this);
         foreach (HackableObject connection in connections) {
             connection.SetEnabled (false);
-            txt.text = PrintConnection (txt.text, connection);
-            txt.rectTransform.sizeDelta += new Vector2 (0, 30f);
         }
 
+        ShowAllConnections ();
+
         unlockedRouters = new List<Router> ();
-        unlockedRouters.Add (GameObject.Find ("Router0").GetComponent<Router> ());
+        unlockedRouters.Add (GameObject.Find ("router0").GetComponent<Router> ());
+    }
+
+    public override void SetEnabled (bool enabled) {
+        base.SetEnabled(enabled);
+        if (enabled) {
+            ShowAllConnections();
+        }
     }
 
     public void AddConnection (HackableObject obj) {
         connections.Add (obj);
         txt.text = PrintConnection (txt.text, obj);
         txt.rectTransform.sizeDelta += new Vector2 (0, 30f);
+    }
+
+    void ShowAllConnections () {
+        txt.rectTransform.sizeDelta = new Vector2 (txt.rectTransform.sizeDelta.x, 0f);
+        txt.text = "";
+        foreach (HackableObject connection in connections) {
+            txt.text = PrintConnection (txt.text, connection);
+            txt.rectTransform.sizeDelta += new Vector2 (0, 30f);
+        }
     }
 
     string PrintConnection (string text, HackableObject obj) {

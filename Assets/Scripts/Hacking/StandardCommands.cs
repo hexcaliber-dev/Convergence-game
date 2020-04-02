@@ -78,8 +78,10 @@ class Hack : Command {
     }
 
     public override void Action (string[] args) {
-        Router router = (Router) GameObject.FindObjectOfType (typeof (Router));
-        HackableObject toHack = router;
+        List<HackableObject> connections = new List<HackableObject>();
+        foreach (Router r in Router.unlockedRouters) {
+            connections.AddRange(r.connections);
+        }
 
         // invalid arguments
         if (args.Length != 1) {
@@ -87,7 +89,7 @@ class Hack : Command {
         }
         // everything good!
         else {
-            toHack = FindHackableObjectByUID (router.connections, args[0]);
+            HackableObject toHack = FindHackableObjectByUID (connections, args[0]);
             if (toHack != null) {
                 // SUCCESS PATH
                 if (toHack.online && !toHack.active) { // hackable object found and not 
@@ -99,7 +101,9 @@ class Hack : Command {
                     // for loop through all hackable objects and turn them off
                     /// TODO: Make sure to check if object should be made inactive
                     /// or not (i.e. camera, etc. should not be when others are hacked)
-                    router.ClosePanel (toHack.panelNo);
+                    foreach (Router r in Router.unlockedRouters) {
+                        r.ClosePanel (toHack.panelNo);
+                    }
                     toHack.SetEnabled (true);
 
                     // FAILURE PATH
