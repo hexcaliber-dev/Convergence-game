@@ -4,4 +4,8 @@ Every generator is equipped with an accessible control panel - here, you may ent
 
 By default, Security Lights ensure all intruders are detected and dealt with automatically. To disable them, reroute power to their corresponding ID’s.
 
+When something is caught by Security Lights, power limitations are overriden and all doors in front will go on lock down, no matter their power status at that moment.
+
+All doors behind the Security Light will open up. In order to reset the power distribution to its default, press the security restricted rest button on the control panel.
+
 NOTE: Do not exceed generator power capacity!!!
