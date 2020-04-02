@@ -3440,7 +3440,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.06161704, y: 0.08507186}
   m_AnchorMax: {x: 0.28277043, y: 0.22139971}
-  m_AnchoredPosition: {x: 0.1000061, y: -0.2000122}
+  m_AnchoredPosition: {x: 0.1000061, y: -0.20001602}
   m_SizeDelta: {x: -0.38000107, y: -1.0200005}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1895820671
@@ -3827,7 +3827,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.31671524, y: 0.104521975}
   m_AnchorMax: {x: 0.6833305, y: 0.37123904}
-  m_AnchoredPosition: {x: 0.000015258789, y: 1.199955}
+  m_AnchoredPosition: {x: 0.000015258789, y: 1.1999512}
   m_SizeDelta: {x: -1.3999939, y: 2.7600021}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1122013030039866937
@@ -4113,7 +4113,7 @@ CanvasGroup:
   m_GameObject: {fileID: 1386302295155716242}
   m_Enabled: 1
   m_Alpha: 0
-  m_Interactable: 0
+  m_Interactable: 1
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!114 &1386302295155716252
@@ -4204,7 +4204,7 @@ CanvasGroup:
   m_Enabled: 1
   m_Alpha: 1
   m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!114 &1850531237064393411
 MonoBehaviour:
@@ -6726,7 +6726,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0.99772936, y: 1}
-  m_AnchoredPosition: {x: 7.13, y: 927.63306}
+  m_AnchoredPosition: {x: 7.13, y: 1042.1703}
   m_SizeDelta: {x: -9.68, y: 1500}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &1850531237950370597
@@ -7843,7 +7843,7 @@ CanvasGroup:
   m_Enabled: 1
   m_Alpha: 0
   m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!1 &1850531238846052858
 GameObject:
@@ -10008,7 +10008,7 @@ MonoBehaviour:
   m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 0
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -10320,7 +10320,7 @@ MonoBehaviour:
   m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 0
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -13481,8 +13481,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5166138376586570082}
   m_HandleRect: {fileID: 5166138376586570085}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 0.38157797
+  m_Value: 0.00000011713086
+  m_Size: 0.30521974
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
