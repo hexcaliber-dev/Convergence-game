@@ -72,6 +72,11 @@ public class Terminal : MonoBehaviour {
     public void PrintLine (string line) {
         output.text += " " + line + "\n";
         // output.rectTransform.sizeDelta += new Vector2 (0, TEXT_HEIGHT);
+        StartCoroutine(scrollDownAutomatically());
+    }
+
+    IEnumerator scrollDownAutomatically () {
+        yield return new WaitForSeconds (0.1f);
         scroll.verticalNormalizedPosition = 0.00001f;
     }
 

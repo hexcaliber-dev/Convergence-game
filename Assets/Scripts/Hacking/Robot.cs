@@ -16,6 +16,8 @@ public class Robot : HackableObject {
     // for flipping robot 
     public bool facingRight = true;
 
+    public CanvasGroup panOverlay;
+
     // to change animation states
     public Animator baseAnimator;
 
@@ -32,7 +34,7 @@ public class Robot : HackableObject {
         rigidBody = GetComponent<Rigidbody2D> ();
         movingKeys = 0;
         horiz = vert = 0;
-        command_library = new Dictionary<string, Command> { {"move", new Move (GameObject.FindObjectOfType<Commands> (), this) } };
+        command_library = new Dictionary<string, Command> { { "move", new Move (GameObject.FindObjectOfType<Commands> (), this) } };
     }
 
     // runs every frame
@@ -77,12 +79,17 @@ public class Robot : HackableObject {
             if (horiz < 0)
                 newDirRight = false;
         }
+        if (canMove && Input.GetKey (KeyCode.Q)) {
+            canMove = false;
+            panOverlay.alpha = 0f;
+            panOverlay.blocksRaycasts = false;
+        }
 
         // Flip Robot
         if (newDirRight != facingRight) {
             facingRight = newDirRight;
-            foreach (Transform t in GetComponentsInChildren<Transform>()) {
-                if (t != transform && t.GetComponent<Camera>() == null) {
+            foreach (Transform t in GetComponentsInChildren<Transform> ()) {
+                if (t != transform && t.GetComponent<Camera> () == null) {
                     t.Rotate (new Vector2 (0, 180));
                 }
             }
@@ -122,6 +129,8 @@ public class Robot : HackableObject {
 
         public override void Action (string[] args) {
             robotRef.canMove = true;
+            robotRef.panOverlay.alpha = 1f;
+            robotRef.panOverlay.blocksRaycasts = true;
             comRef.PrintToTerminal ("<color=\"blue\">Robot Move Enabled. Press A and D to move</color>");
         }
     }

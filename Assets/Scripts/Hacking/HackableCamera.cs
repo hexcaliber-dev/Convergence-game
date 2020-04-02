@@ -10,6 +10,7 @@ public class HackableCamera : HackableObject {
 
     public bool panful;
     public float speed;
+    public CanvasGroup panOverlay;
     // Bounds for movement
     const float LOWER_BOUND = -5f,
         UPPER_BOUND = 5f;
@@ -29,6 +30,8 @@ public class HackableCamera : HackableObject {
             } else if (Input.GetKey (KeyCode.D) && transform.position.x < UPPER_BOUND) {
                 GetComponent<Camera> ().transform.Translate (Vector2.right * Time.deltaTime * speed);
             } else if (Input.GetKey (KeyCode.Q)) {
+                panOverlay.alpha = 0f;
+                panOverlay.blocksRaycasts = false;
                 panful = false;
                 terminal.PrintLine ("<color=\"blue\">Panning Disabled.</color>");
             }
@@ -48,6 +51,8 @@ public class HackableCamera : HackableObject {
 
         public override void Action (string[] args) {
             camera.panful = true;
+            camera.panOverlay.alpha = 1f;
+            camera.panOverlay.blocksRaycasts = true;
             comRef.PrintToTerminal ("<color=\"blue\">Panning Enabled. Press A and D to pan</color>");
         }
     }
