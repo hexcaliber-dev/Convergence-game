@@ -95,10 +95,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panel: {fileID: 0}
+  panelNo: 0
   active: 0
   online: 1
-  uid: 
+  uid: router1
   terminal: {fileID: 0}
-  connections: []
+  connections:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   nameTxt: {fileID: 0}
   txt: {fileID: 0}

@@ -8513,9 +8513,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2914259102779077286, guid: 577ce718e354f374cbfa53821a1ccbda,
         type: 3}
-      propertyPath: connections.Array.size
-      value: 8
-      objectReference: {fileID: 0}
+      propertyPath: panel
+      value: 
+      objectReference: {fileID: 8955599052853066720}
     - target: {fileID: 2914259102779077286, guid: 577ce718e354f374cbfa53821a1ccbda,
         type: 3}
       propertyPath: terminal
@@ -8548,26 +8548,6 @@ PrefabInstance:
       objectReference: {fileID: 1379559242}
     - target: {fileID: 2914259102779077286, guid: 577ce718e354f374cbfa53821a1ccbda,
         type: 3}
-      propertyPath: uid
-      value: router1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2914259102779077286, guid: 577ce718e354f374cbfa53821a1ccbda,
-        type: 3}
-      propertyPath: panel
-      value: 
-      objectReference: {fileID: 8955599052853066720}
-    - target: {fileID: 2914259102779077286, guid: 577ce718e354f374cbfa53821a1ccbda,
-        type: 3}
-      propertyPath: nameTxt
-      value: 
-      objectReference: {fileID: 1850531237771326562}
-    - target: {fileID: 2914259102779077286, guid: 577ce718e354f374cbfa53821a1ccbda,
-        type: 3}
-      propertyPath: txt
-      value: 
-      objectReference: {fileID: 1850531237466129788}
-    - target: {fileID: 2914259102779077286, guid: 577ce718e354f374cbfa53821a1ccbda,
-        type: 3}
       propertyPath: connections.Array.data[5]
       value: 
       objectReference: {fileID: 197777144}
@@ -8581,6 +8561,16 @@ PrefabInstance:
       propertyPath: connections.Array.data[7]
       value: 
       objectReference: {fileID: 1059788967}
+    - target: {fileID: 2914259102779077286, guid: 577ce718e354f374cbfa53821a1ccbda,
+        type: 3}
+      propertyPath: nameTxt
+      value: 
+      objectReference: {fileID: 1850531237771326562}
+    - target: {fileID: 2914259102779077286, guid: 577ce718e354f374cbfa53821a1ccbda,
+        type: 3}
+      propertyPath: txt
+      value: 
+      objectReference: {fileID: 1850531237466129788}
     - target: {fileID: 6549354583586708606, guid: 577ce718e354f374cbfa53821a1ccbda,
         type: 3}
       propertyPath: m_LocalPosition.x
