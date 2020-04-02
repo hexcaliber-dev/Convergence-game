@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 937117657194438955}
   m_LocalRotation: {x: 0, y: 0, z: -0.9999995, w: 0.0009949715}
   m_LocalPosition: {x: 6.55, y: 3.85, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children:
   - {fileID: 2204792017438634864}
   m_Father: {fileID: 0}
@@ -168,8 +168,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5683657fd4523c94fb11a90bba43b885, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  objName: 
+  id: 987
+  objName: SecurityLight
   generator: {fileID: 0}
   onInitially: 0
   past_doors: []
