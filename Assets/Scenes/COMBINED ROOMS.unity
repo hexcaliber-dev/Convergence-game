@@ -7921,7 +7921,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 8400000, guid: ad03ea278b3f1eb42a6f049e438ab9f2, type: 2}
+      objectReference: {fileID: 8400000, guid: 402fcf4fec74fa347ba1a62dfc9fdd1e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47736d623f6b4fe4691ebfb46a278c47, type: 3}
 --- !u!114 &1379559242 stripped
@@ -12128,6 +12128,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 80450406, guid: 9b580f7164d1c314b832a46b4f46b0e7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 4.1900024
+      objectReference: {fileID: 0}
+    - target: {fileID: 80450406, guid: 9b580f7164d1c314b832a46b4f46b0e7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.9299927
+      objectReference: {fileID: 0}
     - target: {fileID: 185601374, guid: 9b580f7164d1c314b832a46b4f46b0e7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
