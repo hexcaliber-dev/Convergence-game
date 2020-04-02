@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 public class Robot : HackableObject {
 
@@ -131,6 +132,7 @@ public class Robot : HackableObject {
             robotRef.canMove = true;
             robotRef.panOverlay.alpha = 1f;
             robotRef.panOverlay.blocksRaycasts = true;
+            EventSystem.current.SetSelectedGameObject (null);
             comRef.PrintToTerminal ("<color=\"blue\">Robot Move Enabled. Press A and D to move</color>");
         }
     }

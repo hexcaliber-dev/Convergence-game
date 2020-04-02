@@ -62,8 +62,10 @@ public class Terminal : MonoBehaviour {
         string cmd = input.text;
         history.AddAfter (history.First, new LinkedListNode<string> (cmd));
         input.text = "";
-        EventSystem.current.SetSelectedGameObject (input.gameObject, null);
-        input.OnPointerClick (new PointerEventData (EventSystem.current));
+        if (!(cmd.Equals("pan") || cmd.Equals("move"))) {
+            EventSystem.current.SetSelectedGameObject (input.gameObject, null);
+            input.OnPointerClick (new PointerEventData (EventSystem.current));
+        }
         PrintLine ("> " + cmd);
         GetComponent<Commands> ().RunCommand (cmd);
         currCommand = history.First;

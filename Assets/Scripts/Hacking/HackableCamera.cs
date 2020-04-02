@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class HackableCamera : HackableObject {
@@ -53,6 +54,7 @@ public class HackableCamera : HackableObject {
             camera.panful = true;
             camera.panOverlay.alpha = 1f;
             camera.panOverlay.blocksRaycasts = true;
+            EventSystem.current.SetSelectedGameObject (null);
             comRef.PrintToTerminal ("<color=\"blue\">Panning Enabled. Press A and D to pan</color>");
         }
     }
