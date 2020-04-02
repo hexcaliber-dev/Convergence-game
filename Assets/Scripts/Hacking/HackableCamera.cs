@@ -13,7 +13,7 @@ public class HackableCamera : HackableObject {
     public float speed;
     public CanvasGroup panOverlay;
     // Bounds for movement
-    const float LOWER_BOUND = -5f,
+    public float LOWER_BOUND = -5f,
         UPPER_BOUND = 5f;
 
     void Start () {
