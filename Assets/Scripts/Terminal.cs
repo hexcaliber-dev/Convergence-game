@@ -60,6 +60,12 @@ public class Terminal : MonoBehaviour {
 
     private void SubmitCommand () {
         string cmd = input.text;
+
+        // Entering no command
+        if (cmd.Equals("")) {
+            PrintLine("> ");
+            return;
+        }
         history.AddAfter (history.First, new LinkedListNode<string> (cmd));
         input.text = "";
         if (!(cmd.Equals("pan") || cmd.Equals("move"))) {

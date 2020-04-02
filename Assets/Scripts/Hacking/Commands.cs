@@ -8,7 +8,13 @@ using UnityEngine;
 public class Commands : MonoBehaviour {
     public TextAsset allFiles;
     public TextAsset allCommands;
-    public static Dictionary<string, Command> cmds = new Dictionary<string, Command> ();
+    public static SortedList<string, Command> cmds = new SortedList<string, Command> (new CommandComparer());
+
+    private class CommandComparer : IComparer<string> {
+        public int Compare(string xName, string yName) {
+            return xName.CompareTo(yName);
+        }
+    }
 
     void Start () {
         
@@ -17,11 +23,8 @@ public class Commands : MonoBehaviour {
         cmds.Add ("read", new Read (this));
         cmds.Add ("hack", new Hack (this));
         cmds.Add ("portscan", new Portscan (this));
-        Debug.Log (this);
+        //Debug.Log (this);
     }
-
-    
-    
 
     public void RunCommand (string cmd) {
         string[] cmdSplit = cmd.Trim ().Split ();

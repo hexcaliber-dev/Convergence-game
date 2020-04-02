@@ -84,6 +84,8 @@ public class Robot : HackableObject {
             canMove = false;
             panOverlay.alpha = 0f;
             panOverlay.blocksRaycasts = false;
+            terminal.PrintLine("<color=\"blue\">Robot Move Disabled.</color>");
+            EventSystem.current.SetSelectedGameObject(FindObjectOfType<Terminal>().input.gameObject);
         }
 
         // Flip Robot

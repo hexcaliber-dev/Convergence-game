@@ -35,6 +35,8 @@ public class HackableCamera : HackableObject {
                 panOverlay.blocksRaycasts = false;
                 panful = false;
                 terminal.PrintLine ("<color=\"blue\">Panning Disabled.</color>");
+                // Trying to reselect Terminal input afterwards:
+                //EventSystem.current.SetSelectedGameObject(FindObjectOfType<Terminal>().input.gameObject);
             }
         }
     }

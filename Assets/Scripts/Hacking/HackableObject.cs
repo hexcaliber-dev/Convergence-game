@@ -57,7 +57,7 @@ public class HackableObject : MonoBehaviour {
         }
 
         // Adds commands to the available command dictionary.
-        public virtual void AddCommands (Dictionary<string, Command> library) {
+        public virtual void AddCommands (IDictionary<string, Command> library) {
                 if (command_library != null) {
                     foreach (KeyValuePair<string, Command> entry in command_library) {
                         library.Add (entry.Key, entry.Value);
@@ -68,7 +68,7 @@ public class HackableObject : MonoBehaviour {
     }
 
     // Removes all commands created by this object from the command library.
-    public virtual void RemoveCommands (Dictionary<string, Command> library) {
+    public virtual void RemoveCommands (IDictionary<string, Command> library) {
         if (command_library != null) {
             foreach (KeyValuePair<string, Command> entry in command_library)
                 library.Remove (entry.Key);
