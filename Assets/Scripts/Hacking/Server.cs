@@ -59,7 +59,7 @@ public class Server : HackableObject {
             nameText.text = uid;
             explorerFiles = panel.GetComponentsInChildren<ExplorerFile> ();
             foreach (ExplorerFile f in explorerFiles) {
-                f.GetComponent<CanvasGroup>().alpha = 0f;
+                f.GetComponent<CanvasGroup> ().alpha = 0f;
             }
             for (int i = 0; i < files.Count; i += 1) {
                 // print(files[i]);
@@ -80,12 +80,14 @@ public class Server : HackableObject {
             SetState (State.Unlocked);
             incorrectPassText.enabled = false;
             terminal.PrintLine ("<color=\"green\">Successfully logged into " + uid + ".</color>");
+            AudioHelper.PlaySound ("correct", false);
             UpdateLight ();
             return true;
         }
         // auth failed (You suck!)
         SetState (State.Locked);
         incorrectPassText.enabled = true;
+        AudioHelper.PlaySound ("error", false);
         passInput.text = "";
         UpdateLight ();
         return false;

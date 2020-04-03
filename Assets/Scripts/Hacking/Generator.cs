@@ -15,8 +15,13 @@ public class Generator : HackableObject {
     public Image checkXImage, chargeMeter;
     public Sprite checkImg, xImg, chargeEmpty, chargeHalf, chargeFull;
     public int maxCharge; // number of devices that can be powered
+
+    public Button clearButton, resetButton, enterButton;
     int currCharge;
     void Start () {
+        clearButton.onClick.RemoveAllListeners ();
+        resetButton.onClick.RemoveAllListeners ();
+        enterButton.onClick.RemoveAllListeners ();
         panelNo = 2;
         connectedObjs = new Dictionary<int, PoweredObject> ();
         foreach (PoweredObject obj in connectedObjList) {
@@ -27,10 +32,16 @@ public class Generator : HackableObject {
 
     public override void SetEnabled (bool enabled) {
         base.SetEnabled (enabled);
-        UpdateDisplay ();
-        nameText.text = uid;
         if (enabled) {
+            UpdateDisplay ();
+            nameText.text = uid;
             AudioHelper.PlaySound ("buzzing", true);
+            clearButton.onClick.RemoveAllListeners ();
+            resetButton.onClick.RemoveAllListeners ();
+            enterButton.onClick.RemoveAllListeners ();
+            clearButton.onClick.AddListener (ClearNumpad);
+            resetButton.onClick.AddListener (Reset);
+            enterButton.onClick.AddListener (Submit);
         } else {
             AudioHelper.Stop ();
         }

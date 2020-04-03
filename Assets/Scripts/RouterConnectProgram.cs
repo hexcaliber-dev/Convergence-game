@@ -34,9 +34,10 @@ public class RouterConnectProgram : MonoBehaviour {
             if (nameInput.text.Equals (Router.allRouterNames[i]) && passInput.text.Equals (Router.allRouterCodes[i])) {
                 // auth success (You a genius!)
                 server.terminal.PrintLine ("<color=\"green\">Router " + nameInput.text + " is now online! " + "</color>");
-                Router newRouter = GameObject.Find(nameInput.text).GetComponent<Router>();
+                AudioHelper.PlaySound ("correct", false);
+                Router newRouter = GameObject.Find (nameInput.text).GetComponent<Router> ();
                 newRouter.online = true;
-                Router.unlockedRouters.Add(newRouter);
+                Router.unlockedRouters.Add (newRouter);
                 StartCoroutine (Overlay (correctOverlay, 3f));
                 return;
             }
@@ -45,6 +46,7 @@ public class RouterConnectProgram : MonoBehaviour {
         // auth failed (You suck!)
         passInput.text = "";
         StartCoroutine (Overlay (incorrectOverlay, 3f));
+        AudioHelper.PlaySound ("error", false);
     }
 
     IEnumerator Overlay (CanvasGroup overlay, float seconds) {

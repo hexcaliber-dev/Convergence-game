@@ -38,6 +38,7 @@ public class Router : HackableObject {
         base.SetEnabled(enabled);
         if (enabled) {
             ShowAllConnections();
+            nameTxt.text = uid;
         }
     }
 
