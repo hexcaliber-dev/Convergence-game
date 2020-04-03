@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -234,7 +234,7 @@ Transform:
   - {fileID: 5288658246249389883}
   - {fileID: 966507906}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &74494597
 PrefabInstance:
@@ -2026,7 +2026,7 @@ Transform:
   - {fileID: 476407402}
   - {fileID: 300128802}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &308004214 stripped
 MonoBehaviour:
@@ -4380,7 +4380,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.3754021, y: 0.45726815}
   m_AnchorMax: {x: 0.5, y: 0.8326356}
-  m_AnchoredPosition: {x: 118, y: -21.945435}
+  m_AnchoredPosition: {x: 40.311, y: -31.3}
   m_SizeDelta: {x: -17.940002, y: -52.99649}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &506199631
@@ -4437,7 +4437,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 506199633}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 978623154}
+        m_MethodName: ClickAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &506199633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4456,7 +4467,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0963a218d20470d478e71edfc322f8b3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 30ed86befd6f8e74ba5c1012363bad47, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -4557,22 +4568,6 @@ PrefabInstance:
     - target: {fileID: 637721004086451579, guid: 257f2701aae89c34bbe470db9e41e820,
         type: 3}
       propertyPath: m_PointLightInnerAngle
-      value: 360
-      objectReference: {fileID: 0}
-    - target: {fileID: 7011150552708542994, guid: 976ec9dfbd182284ba76fc1a51a3ed7f,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 7fbf4d9871efe3945883b7e860c03dac,
-        type: 3}
-    - target: {fileID: 7469152410765739279, guid: 976ec9dfbd182284ba76fc1a51a3ed7f,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8425271743589965664, guid: 976ec9dfbd182284ba76fc1a51a3ed7f,
-        type: 3}
-      propertyPath: m_PointLightOuterAngle
       value: 360
       objectReference: {fileID: 0}
     - target: {fileID: 637721004086451579, guid: 257f2701aae89c34bbe470db9e41e820,
@@ -4909,6 +4904,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 7011150552708542994, guid: 976ec9dfbd182284ba76fc1a51a3ed7f,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7fbf4d9871efe3945883b7e860c03dac,
+        type: 3}
+    - target: {fileID: 7469152410765739279, guid: 976ec9dfbd182284ba76fc1a51a3ed7f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8425271743589965664, guid: 976ec9dfbd182284ba76fc1a51a3ed7f,
+        type: 3}
+      propertyPath: m_PointLightOuterAngle
+      value: 360
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 257f2701aae89c34bbe470db9e41e820, type: 3}
@@ -5658,7 +5669,7 @@ Transform:
   m_LocalScale: {x: 0.014429644, y: -0.44648084, z: 1}
   m_Children: []
   m_Father: {fileID: 1896529074}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &779427284
 SpriteRenderer:
@@ -9445,7 +9456,7 @@ Transform:
   - {fileID: 1350131556}
   - {fileID: 1546680743}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1379559241
 PrefabInstance:
@@ -9492,7 +9503,7 @@ PrefabInstance:
     - target: {fileID: 377884243667712440, guid: 47736d623f6b4fe4691ebfb46a278c47,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 377884243667712440, guid: 47736d623f6b4fe4691ebfb46a278c47,
         type: 3}
@@ -11295,7 +11306,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1546680742
 PrefabInstance:
@@ -12204,8 +12215,8 @@ Transform:
   m_LocalPosition: {x: 0.045, y: 0.041, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 536229053}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1629397951
 MonoBehaviour:
@@ -13597,7 +13608,6 @@ Transform:
   - {fileID: 978623152}
   - {fileID: 1544576129}
   - {fileID: 1213506616}
-  - {fileID: 536229053}
   - {fileID: 779427283}
   m_Father: {fileID: 301393895}
   m_RootOrder: 1
