@@ -82,6 +82,9 @@ public class Server : HackableObject {
             terminal.PrintLine ("<color=\"green\">Successfully logged into " + uid + ".</color>");
             AudioHelper.PlaySound ("correct", false);
             UpdateLight ();
+            foreach (TextAsset file in files) {
+                terminal.AddLogToFile (file);
+            }
             return true;
         }
         // auth failed (You suck!)
