@@ -31,7 +31,7 @@ public class Router : HackableObject {
         ShowAllConnections ();
 
         unlockedRouters = new List<Router> ();
-        unlockedRouters.Add (GameObject.Find ("router0").GetComponent<Router> ());
+        unlockedRouters.Add (GameObject.Find ("Router0").GetComponent<Router> ());
     }
 
     public override void SetEnabled (bool enabled) {
