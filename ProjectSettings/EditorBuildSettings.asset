@@ -11,7 +11,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/TerminalTest.unity
     guid: 8e185ee84f981f245a5751e04f56bf14
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Room 1.unity
     guid: d3be6f5d028ea6f46a98c74b65316310
+  - enabled: 1
+    path: Assets/Scenes/COMBINED ROOMS.unity
+    guid: c80ecd7927dbb864a86e80c17be48423
+  - enabled: 1
+    path: Assets/Scenes/EndingScene.unity
+    guid: ea5725682689f09458ecb5bd5d243a4f
   m_configObjects: {}
