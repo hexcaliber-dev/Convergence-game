@@ -1,4 +1,5 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: fa046d844e97bee46a2510b0693eacb8
 TextureImporter:
   internalIDToNameTable:
@@ -107,6 +108,11 @@ TextureImporter:
   - first:
       213: -4514827676497008591
     second: VacuumRobot-Sheet_34
+=======
+guid: 74cc9679656964d4090fdb3552db33f2
+TextureImporter:
+  internalIDToNameTable: []
+>>>>>>> 4760b3bb86d3dfcefc6de17b0970f10d8eb3d575
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -136,7 +142,11 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
+<<<<<<< HEAD
     filterMode: 0
+=======
+    filterMode: -1
+>>>>>>> 4760b3bb86d3dfcefc6de17b0970f10d8eb3d575
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -145,7 +155,11 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
+<<<<<<< HEAD
   spriteMode: 2
+=======
+  spriteMode: 1
+>>>>>>> 4760b3bb86d3dfcefc6de17b0970f10d8eb3d575
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -169,6 +183,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
+<<<<<<< HEAD
     textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
@@ -194,6 +209,9 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 2
+=======
+    textureCompression: 1
+>>>>>>> 4760b3bb86d3dfcefc6de17b0970f10d8eb3d575
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -202,6 +220,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
+<<<<<<< HEAD
     sprites:
     - serializedVersion: 2
       name: VacuumRobot-Sheet_0
@@ -749,6 +768,9 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+=======
+    sprites: []
+>>>>>>> 4760b3bb86d3dfcefc6de17b0970f10d8eb3d575
     outline: []
     physicsShape: []
     bones: []

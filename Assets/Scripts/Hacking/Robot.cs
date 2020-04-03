@@ -106,12 +106,12 @@ public class Robot : HackableObject {
                 baseAnimator.ResetTrigger ("Idle");                                                
                 baseAnimator.SetTrigger ("Motion");
                 baseAnimator.SetBool ("Moving", moving = true);
-                AudioHelper.PlaySound("robot", true);
+                // AudioHelper.PlaySound("robot", true);
             } else {
                 baseAnimator.ResetTrigger ("Motion");
                 baseAnimator.SetTrigger ("Idle");
                 baseAnimator.SetBool ("Moving", moving = false);
-                AudioHelper.Stop();
+                // AudioHelper.Stop();
             }
             movingKeys = newMovingKeys;
         }
