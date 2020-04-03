@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class InitSequence : MonoBehaviour {
     public TextAsset startupDump;
     public ScrollRect scroll;
-    public TMP_Text initializingTxt, contents, credits;
+    public TMP_Text initializingTxt, contents, credits, fullscreenTxt;
     public CanvasGroup presents, logo;
 
     bool sequenceComplete = false;
@@ -29,6 +29,15 @@ public class InitSequence : MonoBehaviour {
     }
 
     IEnumerator StartupSequence () {
+        yield return new WaitForSeconds(3f);
+
+        for (int i = 0; i < 100f; i += 1) {
+            yield return new WaitForSeconds(0.01f);
+            fullscreenTxt.alpha -= 0.01f;
+        }
+
+        yield return new WaitForSeconds(1);
+
         char[] initializing = "INITIALIZING...".ToCharArray ();
         foreach (char c in initializing) {
             initializingTxt.text += c;
