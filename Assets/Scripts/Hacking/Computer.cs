@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class Computer : HackableObject {
 
     // Start is called before the first frame update
@@ -15,8 +16,7 @@ public class Computer : HackableObject {
 
     }
 
-    public override void SetEnabled (bool enabled) {
-        base.SetEnabled (enabled);
-        
+    public void ClickAction() {
+        SceneManager.LoadScene(2);
     }
 }

@@ -11,7 +11,7 @@ public class Router : HackableObject {
     // TODO fix the list
     public static string[] allRouterNames = new string[] { "router0", "router1", "router2" };
     // Router access codes corresponding to names above. Blank = no code
-    public static string[] allRouterCodes = new string[] { "", "26519", "" };
+    public static string[] allRouterCodes = new string[] { "", "26519", "31415" };
     // list of all hackable objects in room
     public List<HackableObject> connections;
 
